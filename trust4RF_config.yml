@@ -1,0 +1,48 @@
+ ### TRUST FOR RANDOM FOREST CLASSIFIERS ###
+general:
+    feedback: 0.8
+    bn_parameters:
+        bn_path: D:/Dropbox/PhD Marti Manzano/DOGO4ML/trust bn example.dne
+        api_url: http://localhost:8080/api/ssi/assessment
+        id_si: Trust
+        intervals_input_nodes:
+            - Accuracy: [0.45, 0.8]
+            - Precision: [0.45, 0.8]
+            - Recall: [0.45, 0.8]
+            - F1: [0.45, 0.8]
+            - P_Percentage: [0.45, 0.8]
+            - Average_bound: [0.45, 0.8]
+            - Verified_error_inv: [0.45, 0.8]
+            - Average_monotonicity: [0.45, 0.8]
+            - Average_faithfulness: [0.45, 0.8]
+            - Feedback: [0.45, 0.8]
+    protected_attributes:
+        - statussex_A91
+        - statussex_A92
+        - statussex_A93
+        - statussex_A94
+# WEIGHTS FOR WEIGHTED AVERAGED METHOD
+performance:
+    weight: 0.6    
+    perf_metrics:
+        accuracy_weight: 0.6
+        precision_weight: 0
+        recall_weight: 0
+        f1_weight: 0.4
+    
+fairness:
+    weight: 0.2   
+    fair_metrics:
+        p-percentage_weight: 1
+
+robustness:
+    weight: 0.1    
+    rob_metrics:
+        average_bound_weight: 0.6
+        verified_error_inv_weight: 0.4
+        
+explainability:
+    weight: 0.1    
+    expl_metrics:
+        average_monotonicity_weight: 0.5
+        average_faithfulness_weight: 0.5
