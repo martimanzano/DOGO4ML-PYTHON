@@ -1,0 +1,1440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>trust.Trust API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>trust.Trust</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from sklearn.metrics import classification_report
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.ensemble import RandomForestClassifier
+from aix360.algorithms.ted.TED_Cartesian import TED_CartesianExplainer
+from sklego.metrics import p_percent_score, equal_opportunity_score
+from aix360.metrics import faithfulness_metric, monotonicity_metric
+from uq360.metrics.classification_metrics import multiclass_brier_score, expected_calibration_error
+from art.metrics import RobustnessVerificationTreeModelsCliqueMethod
+from art.estimators.classification import SklearnClassifier
+import numpy as np
+import pandas as pd
+import yaml
+import pickle
+import json
+import tqdm
+from pathlib import Path
+from enum import Enum
+from trust.Trust_Weighted_Average import Trust_Weighted_Average
+from trust.Trust_BN import Trust_BN
+
+class Explainability_method(Enum):
+    &#34;&#34;&#34;Class used to control which explainability method is used in every Trust instance. For internal use.
+    Args:
+        Enum (Enum): Explainability method to use
+    &#34;&#34;&#34;
+    LIME = 1
+    TED = 2
+
+class Evaluation_method(Enum):
+    &#34;&#34;&#34;Class used to specify and control which assessment method is used to compute the Trust in every Trust instance.
+
+    Args:
+        Enum (Enum): Assessment method to use
+    &#34;&#34;&#34;
+    Weighted_Average = 1
+    Bayesian_Network = 2
+
+class Trust:
+    &#34;&#34;&#34;Class that computes and optionally stores the TRUST metrics in a cache file for a sklearn classifier and a specified dataset. 
+    It uses some Trust-based libraries such as AIX360, UQ360, and ART360.
+    &#34;&#34;&#34;
+
+    def __init__(self, yaml_config_file, data_x, data_y, trained_model, lime_explainer = None, data_E = None):
+        &#34;&#34;&#34;Entry point of the Trust library without cache management. Instanciates and initializes a Trust object with unweighted Trust metrics computed.
+        Depending on the explainability method to use (i.e., LIME or TED), trained_model will be a TED-enhanced classifier or simply a sklearn classifier.
+        Lime_explainer is required when using LIME as explainability method, whereas data_E (dataset true explanations) is required when using TED.
+
+        Args:
+            yaml_config_file ([yaml module object]): [yaml dict containing the user parameters]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+            trained_model ([sklearn classifier]): [Trained classification model]
+            lime_explainer ([LimeTabularExplainer], optional): [LIME explainer previously created]
+            data_E ([array], optional): [true explanations array]
+        &#34;&#34;&#34;
+        self.feedback = self.get_yaml_feedback(yaml_config_file)
+        self.protected_attributes = yaml_config_file[&#39;protected_attributes&#39;]
+        if (isinstance(trained_model, TED_CartesianExplainer)):
+            rf_model = trained_model.model
+            self.explainability_method = Explainability_method.TED
+            self.expl_E_accuracy = self.compute_explainability_TED(trained_model, data_x, data_y, data_E)
+            self.expl_average_monotonicity = self.expl_average_faithfulness = None
+        elif (isinstance(trained_model, RandomForestClassifier)):
+            rf_model = trained_model
+            self.explainability_method = Explainability_method.LIME
+            self.expl_average_monotonicity, self.expl_average_faithfulness = self.compute_explainability_LIME(rf_model, data_x, data_y, lime_explainer)
+            self.expl_E_accuracy = None
+
+        self.perf_accuracy, self.perf_precision, self.perf_recall, self.perf_f1 = self.get_performance_metrics_from_dict(self.compute_performance_dict(rf_model, data_x, data_y))
+        self.fair_p_percentage, self.fair_equal_opportunity_score = self.compute_fairness(rf_model, data_x, data_y)
+        self.rob_average_bound, self.rob_verified_inv_error = self.compute_robustness(rf_model, data_x, data_y)                
+        self.unc_brier_inv_score, self.unc_expected_cal_inv_error = self.compute_uncertainty(rf_model, data_x, data_y)
+       
+    def get_yaml_feedback(self, yaml_config_file):
+        &#34;&#34;&#34;TRUST: PERFORMANCE. Function to retrieve and return the feedback unweighted value from the yaml configuration file.
+
+        Args:
+            yaml_config_file ([yaml module object]): [yaml dict containing the user parameters]
+
+        Returns:
+            [float]: [unweighted feedback value]
+        &#34;&#34;&#34;
+
+        return yaml_config_file[&#39;feedback&#39;][&#39;value&#39;]
+
+    def compute_performance_dict(self, rf_model, data_x, data_y):
+        &#34;&#34;&#34;TRUST: PERFORMANCE. Function to compute the performance metrics over a provided dataset and using a provided classification model.
+
+        Args:
+            rf_model ([sklearn classifier]): [Trained classification model]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+
+        Returns:
+            [dict]: [dictionary containing the performance metrics evaluated comparing the provided true labels to the predicted ones]
+        &#34;&#34;&#34;
+
+        print(&#34;TRUST - Computing performance metrics...&#34;)
+        prediction = rf_model.predict(data_x)
+
+        return classification_report(data_y, prediction, output_dict=True)                
+    
+    def get_performance_metrics_from_dict(self, perf_dict):
+        &#34;&#34;&#34;TRUST: PERFORMANCE. Retrieves the main performance metrics from the performance dictionary using sklearn.
+
+        Args:
+            perf_dict ([dict]): [dictionary containing the performance metrics, returned using the classification_report function from sklearn]
+
+        Returns:
+            [float, float, float, float]: [accuracy, precision, recall and f1 metrics]
+        &#34;&#34;&#34;
+
+        perf_accuracy = perf_dict[&#39;accuracy&#39;]
+        perf_precision = perf_dict[&#39;weighted avg&#39;][&#39;precision&#39;]
+        perf_recall = perf_dict[&#39;weighted avg&#39;][&#39;recall&#39;]
+        perf_f1 = perf_dict[&#39;weighted avg&#39;][&#39;f1-score&#39;]
+
+        return perf_accuracy, perf_precision, perf_recall, perf_f1
+
+    def compute_fairness(self, rf_model, data_x, data_y):
+        &#34;&#34;&#34;TRUST: FAIRNESS. Function that computes two fairness metrics using the sklego library, i.e., P-Percentage and Equal Opportunity.
+        It uses the protected attributes specified in the yaml configuration file. If there are no protected attributes,
+        the fairness metrics are returned as 1, as there are no fairness issues.
+
+        Args:
+            rf_model ([sklearn classifier]): [Trained classification model]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+
+        Returns:
+            [float, float]: [Means of the p-percentage and equal opportunity vectors, computed over the set of protected attributes]
+        &#34;&#34;&#34;
+
+        print(&#34;TRUST - Computing fairness metrics...&#34;)
+        if (self.protected_attributes is None):
+            return 1, 1
+        else:
+            p_percentage_vector = np.zeros(len(self.protected_attributes))#np.zeros(data_x.values.shape[0])
+            eq_opp_vector = np.zeros(len(self.protected_attributes))
+            for i in range(len(self.protected_attributes)):
+                p_percentage_vector[i] = p_percent_score(sensitive_column=self.protected_attributes[i])(rf_model, data_x)
+                eq_opp_vector[i] = equal_opportunity_score(self.protected_attributes[i])(rf_model, data_x, data_y)
+                                  
+            return np.mean(p_percentage_vector), np.mean(eq_opp_vector)
+
+    def compute_robustness(self, rf_model, data_x, data_y):
+        &#34;&#34;&#34;TRUST: ROBUSTNESS. Function that computes robustness metrics of a sklearn tree-based classifier over a dataset.
+        Currently, it uses the Clique method RobustnessVerificationTreeModelsCliqueMethod from the ART360 library.
+
+        Args:
+            rf_model ([sklearn classifier]): [Trained classification model. For now, it has to be a sklearn tree-based classifier]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+
+        Returns:
+            [float, float]: [Robustness metrics: average bound, and the inverse of the verified error]
+        &#34;&#34;&#34;
+        print(&#34;TRUST - Computing robustness metrics...&#34;)
+        rf_skmodel = SklearnClassifier(model=rf_model)
+        rt = RobustnessVerificationTreeModelsCliqueMethod(classifier=rf_skmodel)        
+        average_bound, verified_error = rt.verify(x=data_x.values, y=pd.get_dummies(data_y).values, eps_init=0.001,
+         nb_search_steps=1, max_clique=2, max_level=1)
+
+        return average_bound, (1-verified_error) # THE LARGER THE AVRG. BOUND THE BETTER, THE LOWER THE VERIFIED ERROR THE BETTER (SO WE INVERT THE ERROR)
+
+    def compute_explainability_LIME(self, rf_model, data_x, data_y, lime_explainer):
+        &#34;&#34;&#34;TRUST: EXPLAINABILITY. Function that computes AIX360 explainability metrics used a previously created LIME explainer over a provided dataset.
+
+        Args:
+            rf_model ([sklearn classifier]): [Trained classification model]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+            lime_explainer ([LimeTabularExplainer]): [LIME explainer previously created]
+
+        Returns:
+            [float, float]: [Means of the monotonicity and faithfulness vectors, computed over a provided dataset using the provided explainer]
+        &#34;&#34;&#34;
+
+        print(&#34;TRUST - Computing explainability metrics...&#34;)
+        ncases = data_x.values.shape[0]     
+        monotonicity_vector = np.zeros(ncases) 
+        faithfulness_vector = np.zeros(ncases)
+        for i in tqdm.tqdm(range(ncases), desc=&#34;Computing explainability&#34;):
+            #print(&#34;Computing explainability...Case &#34; + repr(i+1) + &#34;/&#34; + repr(ncases))
+            #predicted_class = rf_model.predict(data_x.values[i].reshape(1,-1))[0]
+            explanation = lime_explainer.explain_instance(data_x.values[i], rf_model.predict_proba, num_features=5, top_labels=1, num_samples=100)
+            local_explanation = explanation.local_exp[next(iter(explanation.local_exp))]#explanation.local_exp[predicted_class]
+
+            x = data_x.values[i]
+            coefs = np.zeros(x.shape[0])
+        
+            for v in local_explanation:
+                coefs[v[0]] = v[1]
+            base = np.zeros(x.shape[0])
+
+            monotonicity_vector[i] = monotonicity_metric(rf_model, data_x.values[i], coefs, base)
+            faithfulness_vector[i] = faithfulness_metric(rf_model, data_x.values[i], coefs, base)
+        scaler = MinMaxScaler()
+        faithfulness_vector_scaled = scaler.fit_transform(faithfulness_vector.reshape(-1,1)) # COMPUTE FROM -1 TO 1, WE SCALED IT TO 0-1 WITH MINMAX
+
+        return np.mean(monotonicity_vector), np.mean(faithfulness_vector_scaled)
+
+    def compute_explainability_TED(self, ted_model, data_x, data_y, data_E):
+        &#34;&#34;&#34;TRUST: EXPLAINABILITY. Function that computes explainability metrics used a previously created TED-enhanced explainer over a provided dataset.
+        In this case, the TED framework works with dataset enhanced with explanation.
+
+        Args:
+            ted_model ([TED_CartesianExplainer]): [TED-enhanced explainer]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+            data_E ([array]): [true explanations array]
+
+        Returns:
+            [float]: [accuracy of the TED-enhanced classifier predicting the explanations]
+        &#34;&#34;&#34;
+
+        YE_accuracy, Y_accuracy, E_accuracy = ted_model.score(data_x, data_y, data_E)    # evaluate the classifier, although we only need E_acc
+
+        return YE_accuracy
+
+    def compute_uncertainty(self, rf_model, data_x, data_y):
+        &#34;&#34;&#34;TRUST: UNCERTAINTY. Computes UQ360 uncertainty metrics over a provided dataset and using a provided classification model.
+
+        Args:
+            rf_model ([sklearn classifier]): [Trained classification model]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+
+        Returns:
+            [float, float]: [Inverted brier score and inverted expected calibration error]
+        &#34;&#34;&#34;
+        
+        print(&#34;TRUST - Computing uncertainty metrics...&#34;)
+        prediction = rf_model.predict(data_x)
+        prediction_proba = rf_model.predict_proba(data_x)
+        
+        brier_score = multiclass_brier_score(data_y, prediction_proba)        
+        expected_cal_error = expected_calibration_error(data_y, prediction_proba, prediction, len(set(data_y)), False)
+
+        return (1-brier_score), (1-expected_cal_error) # A &#34;cost function&#34; and an error, therefore we invert it
+        
+    def evaluate_trust(self, yaml_config_file, computation_method):
+        &#34;&#34;&#34;Function that assesses the trust using one of the provided evaluation methods once the trust metrics have been computed.
+
+        Args:
+            yaml_config_file ([yaml module object]): [yaml dict containing the user parameters]
+            computation_method ([Evaluation_method]): [chosen assessment method (see class Evaluation_method)]
+
+        Returns:
+            [Trust_Weighted_Average or Trust_BN]: [Assessed Trust using the chosen assessment evaluation method]
+        &#34;&#34;&#34;
+        with open(yaml_config_file, mode=&#39;r&#39;) as config_file:
+            yaml_config = yaml.safe_load(config_file)
+            print(&#34;INFO: Using configuration file &#34; + yaml_config_file)
+            if (computation_method is Evaluation_method.Weighted_Average):
+                return Trust_Weighted_Average(self, yaml_config)
+            elif (computation_method is Evaluation_method.Bayesian_Network):
+                return Trust_BN(self, yaml_config)
+
+    def compute_trust_bn(self, yaml_config_file):
+        &#34;&#34;&#34;Function that instances and initializes an object of the Trust_BN class to assess the trust using a Bayesian network.
+
+        Args:
+            yaml_config_file ([yaml module object]): [yaml dict containing the user parameters, including the Bayesian network filepath and parameters]
+
+        Returns:
+            [Trust_BN]: [Trust_BN object initialized to enable the trust assessment using a provided Bayesian network]
+        &#34;&#34;&#34;
+        with open(yaml_config_file, mode=&#39;r&#39;) as config_file:
+            yaml_config = yaml.safe_load(config_file)
+            print(&#34;INFO: Using configuration file &#34; + yaml_config_file)
+            return Trust_BN(self, yaml_config)
+    
+    @staticmethod
+    def load_compute_trust_with_cache(file_dataset_name, file_configuration_to_use, data_x, data_y, trained_model, lime_explainer = None, data_E = None):
+        &#34;&#34;&#34;Entry point of the Trust library with cache management. Uses pickle as cache instrument in order to save and load already computed Trust objects.
+        Depending on the explainability method to use (i.e., LIME or TED), trained_model will be a TED-enhanced classifier or simply a sklearn classifier.
+        Lime_explainer is required when using LIME as explainability method, whereas data_E (dataset true explanations) is required when using TED.
+
+        Args:
+            file_dataset_name ([string]): [name of the dataset in order to save/load the appropiate cache file]
+            file_configuration_to_use ([string]): [path to the yaml configuration file containing the user parameters]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+            trained_model ([sklearn classifier]): [Trained classification model]
+            lime_explainer ([LimeTabularExplainer], optional): [LIME explainer previously created]
+            data_E ([array], optional): [true explanations array]
+        Returns:
+            [Trust]: [Instanced and initialized Trust object with unweighted metrics computed]
+        &#34;&#34;&#34;
+        trust = None
+        with open(file_configuration_to_use, mode=&#39;r&#39;) as config_file:
+            yaml_config = yaml.safe_load(config_file)
+            print(&#34;INFO: Using configuration file &#34; + file_configuration_to_use)
+
+            try:
+                cached_trust_file_path = Path(&#39;cache/trust_&#39; + file_dataset_name + &#39;.cache&#39;)
+                if cached_trust_file_path.is_file():
+                    with open(cached_trust_file_path, &#39;rb&#39;) as cached_trust_file:
+                        trust = pickle.load(cached_trust_file)
+                        print(&#34;INFO: Loaded trust from cache file &#34; + str(cached_trust_file_path.absolute()))
+            except:
+                pass
+            if trust == None:
+            # LOAD YAML CONFIG FILE
+                print(&#34;INFO: Trust cache not found in &#34; + str(cached_trust_file_path.absolute()))
+                print(&#34;Computing Trust...&#34;)
+                if (isinstance(trained_model, TED_CartesianExplainer)):
+                    trust = Trust(yaml_config, data_x, data_y, trained_model, lime_explainer=None, data_E=data_E)
+                else:
+                    trust = Trust(yaml_config, data_x, data_y, trained_model, lime_explainer=lime_explainer)               
+                                
+                with open(cached_trust_file_path, &#39;wb&#39;) as cached_trust_file:
+                    pickle.dump(trust, cached_trust_file)
+
+        return trust
+
+    def get_Trust_metrics_as_JSON(self):
+        &#34;&#34;&#34;Returns the unweighted, computed trust metrics as a JSON&#34;&#34;&#34;
+        # Create Dictionary
+        trust_metrics = {
+            &#34;ABOUT&#34;: &#34;TRUST ASSESSED AND UNWEIGHTED METRICS&#34;,
+            &#34;feedback&#34;: self.feedback,                
+            &#34;performance&#34;:
+                {
+                    &#34;accuracy&#34;: self.perf_accuracy,                                       
+                    &#34;precision&#34;: self.perf_precision,                        
+                    &#34;recall&#34;: self.perf_recall                        
+                },
+            &#34;fairness&#34;:
+                {                    
+                    &#34;p_percentage&#34;: self.fair_p_percentage,                        
+                    &#34;equal_opportunity&#34;: self.fair_equal_opportunity_score
+                        
+                },
+            &#34;robustness&#34;:
+                {                    
+                    &#34;average_bound&#34;: self.rob_average_bound,                        
+                    &#34;verified_error_inv&#34;: self.rob_verified_inv_error                        
+                },
+            &#34;explainability&#34;:
+                {                    
+                    &#34;average_monotonicity_LIME&#34;: self.expl_average_monotonicity,                        
+                    &#34;average_faithfulness_LIME&#34;: self.expl_average_faithfulness,                        
+                    &#34;E_score_TED&#34;: self.expl_E_accuracy                              
+                },
+            &#34;uncertainty&#34;:
+                {                    
+                    &#34;brier_score&#34;: self.unc_brier_inv_score,
+                    &#34;expected_calibration_error_inv&#34;: self.unc_expected_cal_inv_error                    
+                }
+        }
+        return json.dumps(trust_metrics, indent=4)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="trust.Trust.Evaluation_method"><code class="flex name class">
+<span>class <span class="ident">Evaluation_method</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class used to specify and control which assessment method is used to compute the Trust in every Trust instance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>Enum</code></strong> :&ensp;<code>Enum</code></dt>
+<dd>Assessment method to use</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Evaluation_method(Enum):
+    &#34;&#34;&#34;Class used to specify and control which assessment method is used to compute the Trust in every Trust instance.
+
+    Args:
+        Enum (Enum): Assessment method to use
+    &#34;&#34;&#34;
+    Weighted_Average = 1
+    Bayesian_Network = 2</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="trust.Trust.Evaluation_method.Bayesian_Network"><code class="name">var <span class="ident">Bayesian_Network</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="trust.Trust.Evaluation_method.Weighted_Average"><code class="name">var <span class="ident">Weighted_Average</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="trust.Trust.Explainability_method"><code class="flex name class">
+<span>class <span class="ident">Explainability_method</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class used to control which explainability method is used in every Trust instance. For internal use.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>Enum</code></strong> :&ensp;<code>Enum</code></dt>
+<dd>Explainability method to use</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Explainability_method(Enum):
+    &#34;&#34;&#34;Class used to control which explainability method is used in every Trust instance. For internal use.
+    Args:
+        Enum (Enum): Explainability method to use
+    &#34;&#34;&#34;
+    LIME = 1
+    TED = 2</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="trust.Trust.Explainability_method.LIME"><code class="name">var <span class="ident">LIME</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="trust.Trust.Explainability_method.TED"><code class="name">var <span class="ident">TED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="trust.Trust.Trust"><code class="flex name class">
+<span>class <span class="ident">Trust</span></span>
+<span>(</span><span>yaml_config_file, data_x, data_y, trained_model, lime_explainer=None, data_E=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class that computes and optionally stores the TRUST metrics in a cache file for a sklearn classifier and a specified dataset.
+It uses some Trust-based libraries such as AIX360, UQ360, and ART360.</p>
+<p>Entry point of the Trust library without cache management. Instanciates and initializes a Trust object with unweighted Trust metrics computed.
+Depending on the explainability method to use (i.e., LIME or TED), trained_model will be a TED-enhanced classifier or simply a sklearn classifier.
+Lime_explainer is required when using LIME as explainability method, whereas data_E (dataset true explanations) is required when using TED.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>yaml_config_file</code></strong> :&ensp;<code>[yaml module object]</code></dt>
+<dd>[yaml dict containing the user parameters]</dd>
+<dt><strong><code>data_x</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[feature array]</dd>
+<dt><strong><code>data_y</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[true labels array]</dd>
+<dt><strong><code>trained_model</code></strong> :&ensp;<code>[sklearn classifier]</code></dt>
+<dd>[Trained classification model]</dd>
+<dt><strong><code>lime_explainer</code></strong> :&ensp;<code>[LimeTabularExplainer]</code>, optional</dt>
+<dd>[LIME explainer previously created]</dd>
+<dt><strong><code>data_E</code></strong> :&ensp;<code>[array]</code>, optional</dt>
+<dd>[true explanations array]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Trust:
+    &#34;&#34;&#34;Class that computes and optionally stores the TRUST metrics in a cache file for a sklearn classifier and a specified dataset. 
+    It uses some Trust-based libraries such as AIX360, UQ360, and ART360.
+    &#34;&#34;&#34;
+
+    def __init__(self, yaml_config_file, data_x, data_y, trained_model, lime_explainer = None, data_E = None):
+        &#34;&#34;&#34;Entry point of the Trust library without cache management. Instanciates and initializes a Trust object with unweighted Trust metrics computed.
+        Depending on the explainability method to use (i.e., LIME or TED), trained_model will be a TED-enhanced classifier or simply a sklearn classifier.
+        Lime_explainer is required when using LIME as explainability method, whereas data_E (dataset true explanations) is required when using TED.
+
+        Args:
+            yaml_config_file ([yaml module object]): [yaml dict containing the user parameters]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+            trained_model ([sklearn classifier]): [Trained classification model]
+            lime_explainer ([LimeTabularExplainer], optional): [LIME explainer previously created]
+            data_E ([array], optional): [true explanations array]
+        &#34;&#34;&#34;
+        self.feedback = self.get_yaml_feedback(yaml_config_file)
+        self.protected_attributes = yaml_config_file[&#39;protected_attributes&#39;]
+        if (isinstance(trained_model, TED_CartesianExplainer)):
+            rf_model = trained_model.model
+            self.explainability_method = Explainability_method.TED
+            self.expl_E_accuracy = self.compute_explainability_TED(trained_model, data_x, data_y, data_E)
+            self.expl_average_monotonicity = self.expl_average_faithfulness = None
+        elif (isinstance(trained_model, RandomForestClassifier)):
+            rf_model = trained_model
+            self.explainability_method = Explainability_method.LIME
+            self.expl_average_monotonicity, self.expl_average_faithfulness = self.compute_explainability_LIME(rf_model, data_x, data_y, lime_explainer)
+            self.expl_E_accuracy = None
+
+        self.perf_accuracy, self.perf_precision, self.perf_recall, self.perf_f1 = self.get_performance_metrics_from_dict(self.compute_performance_dict(rf_model, data_x, data_y))
+        self.fair_p_percentage, self.fair_equal_opportunity_score = self.compute_fairness(rf_model, data_x, data_y)
+        self.rob_average_bound, self.rob_verified_inv_error = self.compute_robustness(rf_model, data_x, data_y)                
+        self.unc_brier_inv_score, self.unc_expected_cal_inv_error = self.compute_uncertainty(rf_model, data_x, data_y)
+       
+    def get_yaml_feedback(self, yaml_config_file):
+        &#34;&#34;&#34;TRUST: PERFORMANCE. Function to retrieve and return the feedback unweighted value from the yaml configuration file.
+
+        Args:
+            yaml_config_file ([yaml module object]): [yaml dict containing the user parameters]
+
+        Returns:
+            [float]: [unweighted feedback value]
+        &#34;&#34;&#34;
+
+        return yaml_config_file[&#39;feedback&#39;][&#39;value&#39;]
+
+    def compute_performance_dict(self, rf_model, data_x, data_y):
+        &#34;&#34;&#34;TRUST: PERFORMANCE. Function to compute the performance metrics over a provided dataset and using a provided classification model.
+
+        Args:
+            rf_model ([sklearn classifier]): [Trained classification model]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+
+        Returns:
+            [dict]: [dictionary containing the performance metrics evaluated comparing the provided true labels to the predicted ones]
+        &#34;&#34;&#34;
+
+        print(&#34;TRUST - Computing performance metrics...&#34;)
+        prediction = rf_model.predict(data_x)
+
+        return classification_report(data_y, prediction, output_dict=True)                
+    
+    def get_performance_metrics_from_dict(self, perf_dict):
+        &#34;&#34;&#34;TRUST: PERFORMANCE. Retrieves the main performance metrics from the performance dictionary using sklearn.
+
+        Args:
+            perf_dict ([dict]): [dictionary containing the performance metrics, returned using the classification_report function from sklearn]
+
+        Returns:
+            [float, float, float, float]: [accuracy, precision, recall and f1 metrics]
+        &#34;&#34;&#34;
+
+        perf_accuracy = perf_dict[&#39;accuracy&#39;]
+        perf_precision = perf_dict[&#39;weighted avg&#39;][&#39;precision&#39;]
+        perf_recall = perf_dict[&#39;weighted avg&#39;][&#39;recall&#39;]
+        perf_f1 = perf_dict[&#39;weighted avg&#39;][&#39;f1-score&#39;]
+
+        return perf_accuracy, perf_precision, perf_recall, perf_f1
+
+    def compute_fairness(self, rf_model, data_x, data_y):
+        &#34;&#34;&#34;TRUST: FAIRNESS. Function that computes two fairness metrics using the sklego library, i.e., P-Percentage and Equal Opportunity.
+        It uses the protected attributes specified in the yaml configuration file. If there are no protected attributes,
+        the fairness metrics are returned as 1, as there are no fairness issues.
+
+        Args:
+            rf_model ([sklearn classifier]): [Trained classification model]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+
+        Returns:
+            [float, float]: [Means of the p-percentage and equal opportunity vectors, computed over the set of protected attributes]
+        &#34;&#34;&#34;
+
+        print(&#34;TRUST - Computing fairness metrics...&#34;)
+        if (self.protected_attributes is None):
+            return 1, 1
+        else:
+            p_percentage_vector = np.zeros(len(self.protected_attributes))#np.zeros(data_x.values.shape[0])
+            eq_opp_vector = np.zeros(len(self.protected_attributes))
+            for i in range(len(self.protected_attributes)):
+                p_percentage_vector[i] = p_percent_score(sensitive_column=self.protected_attributes[i])(rf_model, data_x)
+                eq_opp_vector[i] = equal_opportunity_score(self.protected_attributes[i])(rf_model, data_x, data_y)
+                                  
+            return np.mean(p_percentage_vector), np.mean(eq_opp_vector)
+
+    def compute_robustness(self, rf_model, data_x, data_y):
+        &#34;&#34;&#34;TRUST: ROBUSTNESS. Function that computes robustness metrics of a sklearn tree-based classifier over a dataset.
+        Currently, it uses the Clique method RobustnessVerificationTreeModelsCliqueMethod from the ART360 library.
+
+        Args:
+            rf_model ([sklearn classifier]): [Trained classification model. For now, it has to be a sklearn tree-based classifier]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+
+        Returns:
+            [float, float]: [Robustness metrics: average bound, and the inverse of the verified error]
+        &#34;&#34;&#34;
+        print(&#34;TRUST - Computing robustness metrics...&#34;)
+        rf_skmodel = SklearnClassifier(model=rf_model)
+        rt = RobustnessVerificationTreeModelsCliqueMethod(classifier=rf_skmodel)        
+        average_bound, verified_error = rt.verify(x=data_x.values, y=pd.get_dummies(data_y).values, eps_init=0.001,
+         nb_search_steps=1, max_clique=2, max_level=1)
+
+        return average_bound, (1-verified_error) # THE LARGER THE AVRG. BOUND THE BETTER, THE LOWER THE VERIFIED ERROR THE BETTER (SO WE INVERT THE ERROR)
+
+    def compute_explainability_LIME(self, rf_model, data_x, data_y, lime_explainer):
+        &#34;&#34;&#34;TRUST: EXPLAINABILITY. Function that computes AIX360 explainability metrics used a previously created LIME explainer over a provided dataset.
+
+        Args:
+            rf_model ([sklearn classifier]): [Trained classification model]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+            lime_explainer ([LimeTabularExplainer]): [LIME explainer previously created]
+
+        Returns:
+            [float, float]: [Means of the monotonicity and faithfulness vectors, computed over a provided dataset using the provided explainer]
+        &#34;&#34;&#34;
+
+        print(&#34;TRUST - Computing explainability metrics...&#34;)
+        ncases = data_x.values.shape[0]     
+        monotonicity_vector = np.zeros(ncases) 
+        faithfulness_vector = np.zeros(ncases)
+        for i in tqdm.tqdm(range(ncases), desc=&#34;Computing explainability&#34;):
+            #print(&#34;Computing explainability...Case &#34; + repr(i+1) + &#34;/&#34; + repr(ncases))
+            #predicted_class = rf_model.predict(data_x.values[i].reshape(1,-1))[0]
+            explanation = lime_explainer.explain_instance(data_x.values[i], rf_model.predict_proba, num_features=5, top_labels=1, num_samples=100)
+            local_explanation = explanation.local_exp[next(iter(explanation.local_exp))]#explanation.local_exp[predicted_class]
+
+            x = data_x.values[i]
+            coefs = np.zeros(x.shape[0])
+        
+            for v in local_explanation:
+                coefs[v[0]] = v[1]
+            base = np.zeros(x.shape[0])
+
+            monotonicity_vector[i] = monotonicity_metric(rf_model, data_x.values[i], coefs, base)
+            faithfulness_vector[i] = faithfulness_metric(rf_model, data_x.values[i], coefs, base)
+        scaler = MinMaxScaler()
+        faithfulness_vector_scaled = scaler.fit_transform(faithfulness_vector.reshape(-1,1)) # COMPUTE FROM -1 TO 1, WE SCALED IT TO 0-1 WITH MINMAX
+
+        return np.mean(monotonicity_vector), np.mean(faithfulness_vector_scaled)
+
+    def compute_explainability_TED(self, ted_model, data_x, data_y, data_E):
+        &#34;&#34;&#34;TRUST: EXPLAINABILITY. Function that computes explainability metrics used a previously created TED-enhanced explainer over a provided dataset.
+        In this case, the TED framework works with dataset enhanced with explanation.
+
+        Args:
+            ted_model ([TED_CartesianExplainer]): [TED-enhanced explainer]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+            data_E ([array]): [true explanations array]
+
+        Returns:
+            [float]: [accuracy of the TED-enhanced classifier predicting the explanations]
+        &#34;&#34;&#34;
+
+        YE_accuracy, Y_accuracy, E_accuracy = ted_model.score(data_x, data_y, data_E)    # evaluate the classifier, although we only need E_acc
+
+        return YE_accuracy
+
+    def compute_uncertainty(self, rf_model, data_x, data_y):
+        &#34;&#34;&#34;TRUST: UNCERTAINTY. Computes UQ360 uncertainty metrics over a provided dataset and using a provided classification model.
+
+        Args:
+            rf_model ([sklearn classifier]): [Trained classification model]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+
+        Returns:
+            [float, float]: [Inverted brier score and inverted expected calibration error]
+        &#34;&#34;&#34;
+        
+        print(&#34;TRUST - Computing uncertainty metrics...&#34;)
+        prediction = rf_model.predict(data_x)
+        prediction_proba = rf_model.predict_proba(data_x)
+        
+        brier_score = multiclass_brier_score(data_y, prediction_proba)        
+        expected_cal_error = expected_calibration_error(data_y, prediction_proba, prediction, len(set(data_y)), False)
+
+        return (1-brier_score), (1-expected_cal_error) # A &#34;cost function&#34; and an error, therefore we invert it
+        
+    def evaluate_trust(self, yaml_config_file, computation_method):
+        &#34;&#34;&#34;Function that assesses the trust using one of the provided evaluation methods once the trust metrics have been computed.
+
+        Args:
+            yaml_config_file ([yaml module object]): [yaml dict containing the user parameters]
+            computation_method ([Evaluation_method]): [chosen assessment method (see class Evaluation_method)]
+
+        Returns:
+            [Trust_Weighted_Average or Trust_BN]: [Assessed Trust using the chosen assessment evaluation method]
+        &#34;&#34;&#34;
+        with open(yaml_config_file, mode=&#39;r&#39;) as config_file:
+            yaml_config = yaml.safe_load(config_file)
+            print(&#34;INFO: Using configuration file &#34; + yaml_config_file)
+            if (computation_method is Evaluation_method.Weighted_Average):
+                return Trust_Weighted_Average(self, yaml_config)
+            elif (computation_method is Evaluation_method.Bayesian_Network):
+                return Trust_BN(self, yaml_config)
+
+    def compute_trust_bn(self, yaml_config_file):
+        &#34;&#34;&#34;Function that instances and initializes an object of the Trust_BN class to assess the trust using a Bayesian network.
+
+        Args:
+            yaml_config_file ([yaml module object]): [yaml dict containing the user parameters, including the Bayesian network filepath and parameters]
+
+        Returns:
+            [Trust_BN]: [Trust_BN object initialized to enable the trust assessment using a provided Bayesian network]
+        &#34;&#34;&#34;
+        with open(yaml_config_file, mode=&#39;r&#39;) as config_file:
+            yaml_config = yaml.safe_load(config_file)
+            print(&#34;INFO: Using configuration file &#34; + yaml_config_file)
+            return Trust_BN(self, yaml_config)
+    
+    @staticmethod
+    def load_compute_trust_with_cache(file_dataset_name, file_configuration_to_use, data_x, data_y, trained_model, lime_explainer = None, data_E = None):
+        &#34;&#34;&#34;Entry point of the Trust library with cache management. Uses pickle as cache instrument in order to save and load already computed Trust objects.
+        Depending on the explainability method to use (i.e., LIME or TED), trained_model will be a TED-enhanced classifier or simply a sklearn classifier.
+        Lime_explainer is required when using LIME as explainability method, whereas data_E (dataset true explanations) is required when using TED.
+
+        Args:
+            file_dataset_name ([string]): [name of the dataset in order to save/load the appropiate cache file]
+            file_configuration_to_use ([string]): [path to the yaml configuration file containing the user parameters]
+            data_x ([array]): [feature array]
+            data_y ([array]): [true labels array]
+            trained_model ([sklearn classifier]): [Trained classification model]
+            lime_explainer ([LimeTabularExplainer], optional): [LIME explainer previously created]
+            data_E ([array], optional): [true explanations array]
+        Returns:
+            [Trust]: [Instanced and initialized Trust object with unweighted metrics computed]
+        &#34;&#34;&#34;
+        trust = None
+        with open(file_configuration_to_use, mode=&#39;r&#39;) as config_file:
+            yaml_config = yaml.safe_load(config_file)
+            print(&#34;INFO: Using configuration file &#34; + file_configuration_to_use)
+
+            try:
+                cached_trust_file_path = Path(&#39;cache/trust_&#39; + file_dataset_name + &#39;.cache&#39;)
+                if cached_trust_file_path.is_file():
+                    with open(cached_trust_file_path, &#39;rb&#39;) as cached_trust_file:
+                        trust = pickle.load(cached_trust_file)
+                        print(&#34;INFO: Loaded trust from cache file &#34; + str(cached_trust_file_path.absolute()))
+            except:
+                pass
+            if trust == None:
+            # LOAD YAML CONFIG FILE
+                print(&#34;INFO: Trust cache not found in &#34; + str(cached_trust_file_path.absolute()))
+                print(&#34;Computing Trust...&#34;)
+                if (isinstance(trained_model, TED_CartesianExplainer)):
+                    trust = Trust(yaml_config, data_x, data_y, trained_model, lime_explainer=None, data_E=data_E)
+                else:
+                    trust = Trust(yaml_config, data_x, data_y, trained_model, lime_explainer=lime_explainer)               
+                                
+                with open(cached_trust_file_path, &#39;wb&#39;) as cached_trust_file:
+                    pickle.dump(trust, cached_trust_file)
+
+        return trust
+
+    def get_Trust_metrics_as_JSON(self):
+        &#34;&#34;&#34;Returns the unweighted, computed trust metrics as a JSON&#34;&#34;&#34;
+        # Create Dictionary
+        trust_metrics = {
+            &#34;ABOUT&#34;: &#34;TRUST ASSESSED AND UNWEIGHTED METRICS&#34;,
+            &#34;feedback&#34;: self.feedback,                
+            &#34;performance&#34;:
+                {
+                    &#34;accuracy&#34;: self.perf_accuracy,                                       
+                    &#34;precision&#34;: self.perf_precision,                        
+                    &#34;recall&#34;: self.perf_recall                        
+                },
+            &#34;fairness&#34;:
+                {                    
+                    &#34;p_percentage&#34;: self.fair_p_percentage,                        
+                    &#34;equal_opportunity&#34;: self.fair_equal_opportunity_score
+                        
+                },
+            &#34;robustness&#34;:
+                {                    
+                    &#34;average_bound&#34;: self.rob_average_bound,                        
+                    &#34;verified_error_inv&#34;: self.rob_verified_inv_error                        
+                },
+            &#34;explainability&#34;:
+                {                    
+                    &#34;average_monotonicity_LIME&#34;: self.expl_average_monotonicity,                        
+                    &#34;average_faithfulness_LIME&#34;: self.expl_average_faithfulness,                        
+                    &#34;E_score_TED&#34;: self.expl_E_accuracy                              
+                },
+            &#34;uncertainty&#34;:
+                {                    
+                    &#34;brier_score&#34;: self.unc_brier_inv_score,
+                    &#34;expected_calibration_error_inv&#34;: self.unc_expected_cal_inv_error                    
+                }
+        }
+        return json.dumps(trust_metrics, indent=4)</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="trust.Trust.Trust.load_compute_trust_with_cache"><code class="name flex">
+<span>def <span class="ident">load_compute_trust_with_cache</span></span>(<span>file_dataset_name, file_configuration_to_use, data_x, data_y, trained_model, lime_explainer=None, data_E=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Entry point of the Trust library with cache management. Uses pickle as cache instrument in order to save and load already computed Trust objects.
+Depending on the explainability method to use (i.e., LIME or TED), trained_model will be a TED-enhanced classifier or simply a sklearn classifier.
+Lime_explainer is required when using LIME as explainability method, whereas data_E (dataset true explanations) is required when using TED.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>file_dataset_name</code></strong> :&ensp;<code>[string]</code></dt>
+<dd>[name of the dataset in order to save/load the appropiate cache file]</dd>
+<dt><strong><code>file_configuration_to_use</code></strong> :&ensp;<code>[string]</code></dt>
+<dd>[path to the yaml configuration file containing the user parameters]</dd>
+<dt><strong><code>data_x</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[feature array]</dd>
+<dt><strong><code>data_y</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[true labels array]</dd>
+<dt><strong><code>trained_model</code></strong> :&ensp;<code>[sklearn classifier]</code></dt>
+<dd>[Trained classification model]</dd>
+<dt><strong><code>lime_explainer</code></strong> :&ensp;<code>[LimeTabularExplainer]</code>, optional</dt>
+<dd>[LIME explainer previously created]</dd>
+<dt><strong><code>data_E</code></strong> :&ensp;<code>[array]</code>, optional</dt>
+<dd>[true explanations array]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[<a title="trust.Trust.Trust" href="#trust.Trust.Trust">Trust</a>]</code></dt>
+<dd>[Instanced and initialized Trust object with unweighted metrics computed]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def load_compute_trust_with_cache(file_dataset_name, file_configuration_to_use, data_x, data_y, trained_model, lime_explainer = None, data_E = None):
+    &#34;&#34;&#34;Entry point of the Trust library with cache management. Uses pickle as cache instrument in order to save and load already computed Trust objects.
+    Depending on the explainability method to use (i.e., LIME or TED), trained_model will be a TED-enhanced classifier or simply a sklearn classifier.
+    Lime_explainer is required when using LIME as explainability method, whereas data_E (dataset true explanations) is required when using TED.
+
+    Args:
+        file_dataset_name ([string]): [name of the dataset in order to save/load the appropiate cache file]
+        file_configuration_to_use ([string]): [path to the yaml configuration file containing the user parameters]
+        data_x ([array]): [feature array]
+        data_y ([array]): [true labels array]
+        trained_model ([sklearn classifier]): [Trained classification model]
+        lime_explainer ([LimeTabularExplainer], optional): [LIME explainer previously created]
+        data_E ([array], optional): [true explanations array]
+    Returns:
+        [Trust]: [Instanced and initialized Trust object with unweighted metrics computed]
+    &#34;&#34;&#34;
+    trust = None
+    with open(file_configuration_to_use, mode=&#39;r&#39;) as config_file:
+        yaml_config = yaml.safe_load(config_file)
+        print(&#34;INFO: Using configuration file &#34; + file_configuration_to_use)
+
+        try:
+            cached_trust_file_path = Path(&#39;cache/trust_&#39; + file_dataset_name + &#39;.cache&#39;)
+            if cached_trust_file_path.is_file():
+                with open(cached_trust_file_path, &#39;rb&#39;) as cached_trust_file:
+                    trust = pickle.load(cached_trust_file)
+                    print(&#34;INFO: Loaded trust from cache file &#34; + str(cached_trust_file_path.absolute()))
+        except:
+            pass
+        if trust == None:
+        # LOAD YAML CONFIG FILE
+            print(&#34;INFO: Trust cache not found in &#34; + str(cached_trust_file_path.absolute()))
+            print(&#34;Computing Trust...&#34;)
+            if (isinstance(trained_model, TED_CartesianExplainer)):
+                trust = Trust(yaml_config, data_x, data_y, trained_model, lime_explainer=None, data_E=data_E)
+            else:
+                trust = Trust(yaml_config, data_x, data_y, trained_model, lime_explainer=lime_explainer)               
+                            
+            with open(cached_trust_file_path, &#39;wb&#39;) as cached_trust_file:
+                pickle.dump(trust, cached_trust_file)
+
+    return trust</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="trust.Trust.Trust.compute_explainability_LIME"><code class="name flex">
+<span>def <span class="ident">compute_explainability_LIME</span></span>(<span>self, rf_model, data_x, data_y, lime_explainer)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TRUST: EXPLAINABILITY. Function that computes AIX360 explainability metrics used a previously created LIME explainer over a provided dataset.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>rf_model</code></strong> :&ensp;<code>[sklearn classifier]</code></dt>
+<dd>[Trained classification model]</dd>
+<dt><strong><code>data_x</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[feature array]</dd>
+<dt><strong><code>data_y</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[true labels array]</dd>
+<dt><strong><code>lime_explainer</code></strong> :&ensp;<code>[LimeTabularExplainer]</code></dt>
+<dd>[LIME explainer previously created]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[float, float]</code></dt>
+<dd>[Means of the monotonicity and faithfulness vectors, computed over a provided dataset using the provided explainer]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_explainability_LIME(self, rf_model, data_x, data_y, lime_explainer):
+    &#34;&#34;&#34;TRUST: EXPLAINABILITY. Function that computes AIX360 explainability metrics used a previously created LIME explainer over a provided dataset.
+
+    Args:
+        rf_model ([sklearn classifier]): [Trained classification model]
+        data_x ([array]): [feature array]
+        data_y ([array]): [true labels array]
+        lime_explainer ([LimeTabularExplainer]): [LIME explainer previously created]
+
+    Returns:
+        [float, float]: [Means of the monotonicity and faithfulness vectors, computed over a provided dataset using the provided explainer]
+    &#34;&#34;&#34;
+
+    print(&#34;TRUST - Computing explainability metrics...&#34;)
+    ncases = data_x.values.shape[0]     
+    monotonicity_vector = np.zeros(ncases) 
+    faithfulness_vector = np.zeros(ncases)
+    for i in tqdm.tqdm(range(ncases), desc=&#34;Computing explainability&#34;):
+        #print(&#34;Computing explainability...Case &#34; + repr(i+1) + &#34;/&#34; + repr(ncases))
+        #predicted_class = rf_model.predict(data_x.values[i].reshape(1,-1))[0]
+        explanation = lime_explainer.explain_instance(data_x.values[i], rf_model.predict_proba, num_features=5, top_labels=1, num_samples=100)
+        local_explanation = explanation.local_exp[next(iter(explanation.local_exp))]#explanation.local_exp[predicted_class]
+
+        x = data_x.values[i]
+        coefs = np.zeros(x.shape[0])
+    
+        for v in local_explanation:
+            coefs[v[0]] = v[1]
+        base = np.zeros(x.shape[0])
+
+        monotonicity_vector[i] = monotonicity_metric(rf_model, data_x.values[i], coefs, base)
+        faithfulness_vector[i] = faithfulness_metric(rf_model, data_x.values[i], coefs, base)
+    scaler = MinMaxScaler()
+    faithfulness_vector_scaled = scaler.fit_transform(faithfulness_vector.reshape(-1,1)) # COMPUTE FROM -1 TO 1, WE SCALED IT TO 0-1 WITH MINMAX
+
+    return np.mean(monotonicity_vector), np.mean(faithfulness_vector_scaled)</code></pre>
+</details>
+</dd>
+<dt id="trust.Trust.Trust.compute_explainability_TED"><code class="name flex">
+<span>def <span class="ident">compute_explainability_TED</span></span>(<span>self, ted_model, data_x, data_y, data_E)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TRUST: EXPLAINABILITY. Function that computes explainability metrics used a previously created TED-enhanced explainer over a provided dataset.
+In this case, the TED framework works with dataset enhanced with explanation.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ted_model</code></strong> :&ensp;<code>[TED_CartesianExplainer]</code></dt>
+<dd>[TED-enhanced explainer]</dd>
+<dt><strong><code>data_x</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[feature array]</dd>
+<dt><strong><code>data_y</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[true labels array]</dd>
+<dt><strong><code>data_E</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[true explanations array]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[float]</code></dt>
+<dd>[accuracy of the TED-enhanced classifier predicting the explanations]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_explainability_TED(self, ted_model, data_x, data_y, data_E):
+    &#34;&#34;&#34;TRUST: EXPLAINABILITY. Function that computes explainability metrics used a previously created TED-enhanced explainer over a provided dataset.
+    In this case, the TED framework works with dataset enhanced with explanation.
+
+    Args:
+        ted_model ([TED_CartesianExplainer]): [TED-enhanced explainer]
+        data_x ([array]): [feature array]
+        data_y ([array]): [true labels array]
+        data_E ([array]): [true explanations array]
+
+    Returns:
+        [float]: [accuracy of the TED-enhanced classifier predicting the explanations]
+    &#34;&#34;&#34;
+
+    YE_accuracy, Y_accuracy, E_accuracy = ted_model.score(data_x, data_y, data_E)    # evaluate the classifier, although we only need E_acc
+
+    return YE_accuracy</code></pre>
+</details>
+</dd>
+<dt id="trust.Trust.Trust.compute_fairness"><code class="name flex">
+<span>def <span class="ident">compute_fairness</span></span>(<span>self, rf_model, data_x, data_y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TRUST: FAIRNESS. Function that computes two fairness metrics using the sklego library, i.e., P-Percentage and Equal Opportunity.
+It uses the protected attributes specified in the yaml configuration file. If there are no protected attributes,
+the fairness metrics are returned as 1, as there are no fairness issues.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>rf_model</code></strong> :&ensp;<code>[sklearn classifier]</code></dt>
+<dd>[Trained classification model]</dd>
+<dt><strong><code>data_x</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[feature array]</dd>
+<dt><strong><code>data_y</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[true labels array]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[float, float]</code></dt>
+<dd>[Means of the p-percentage and equal opportunity vectors, computed over the set of protected attributes]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_fairness(self, rf_model, data_x, data_y):
+    &#34;&#34;&#34;TRUST: FAIRNESS. Function that computes two fairness metrics using the sklego library, i.e., P-Percentage and Equal Opportunity.
+    It uses the protected attributes specified in the yaml configuration file. If there are no protected attributes,
+    the fairness metrics are returned as 1, as there are no fairness issues.
+
+    Args:
+        rf_model ([sklearn classifier]): [Trained classification model]
+        data_x ([array]): [feature array]
+        data_y ([array]): [true labels array]
+
+    Returns:
+        [float, float]: [Means of the p-percentage and equal opportunity vectors, computed over the set of protected attributes]
+    &#34;&#34;&#34;
+
+    print(&#34;TRUST - Computing fairness metrics...&#34;)
+    if (self.protected_attributes is None):
+        return 1, 1
+    else:
+        p_percentage_vector = np.zeros(len(self.protected_attributes))#np.zeros(data_x.values.shape[0])
+        eq_opp_vector = np.zeros(len(self.protected_attributes))
+        for i in range(len(self.protected_attributes)):
+            p_percentage_vector[i] = p_percent_score(sensitive_column=self.protected_attributes[i])(rf_model, data_x)
+            eq_opp_vector[i] = equal_opportunity_score(self.protected_attributes[i])(rf_model, data_x, data_y)
+                              
+        return np.mean(p_percentage_vector), np.mean(eq_opp_vector)</code></pre>
+</details>
+</dd>
+<dt id="trust.Trust.Trust.compute_performance_dict"><code class="name flex">
+<span>def <span class="ident">compute_performance_dict</span></span>(<span>self, rf_model, data_x, data_y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TRUST: PERFORMANCE. Function to compute the performance metrics over a provided dataset and using a provided classification model.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>rf_model</code></strong> :&ensp;<code>[sklearn classifier]</code></dt>
+<dd>[Trained classification model]</dd>
+<dt><strong><code>data_x</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[feature array]</dd>
+<dt><strong><code>data_y</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[true labels array]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[dict]</code></dt>
+<dd>[dictionary containing the performance metrics evaluated comparing the provided true labels to the predicted ones]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_performance_dict(self, rf_model, data_x, data_y):
+    &#34;&#34;&#34;TRUST: PERFORMANCE. Function to compute the performance metrics over a provided dataset and using a provided classification model.
+
+    Args:
+        rf_model ([sklearn classifier]): [Trained classification model]
+        data_x ([array]): [feature array]
+        data_y ([array]): [true labels array]
+
+    Returns:
+        [dict]: [dictionary containing the performance metrics evaluated comparing the provided true labels to the predicted ones]
+    &#34;&#34;&#34;
+
+    print(&#34;TRUST - Computing performance metrics...&#34;)
+    prediction = rf_model.predict(data_x)
+
+    return classification_report(data_y, prediction, output_dict=True)                </code></pre>
+</details>
+</dd>
+<dt id="trust.Trust.Trust.compute_robustness"><code class="name flex">
+<span>def <span class="ident">compute_robustness</span></span>(<span>self, rf_model, data_x, data_y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TRUST: ROBUSTNESS. Function that computes robustness metrics of a sklearn tree-based classifier over a dataset.
+Currently, it uses the Clique method RobustnessVerificationTreeModelsCliqueMethod from the ART360 library.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>rf_model</code></strong> :&ensp;<code>[sklearn classifier]</code></dt>
+<dd>[Trained classification model. For now, it has to be a sklearn tree-based classifier]</dd>
+<dt><strong><code>data_x</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[feature array]</dd>
+<dt><strong><code>data_y</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[true labels array]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[float, float]</code></dt>
+<dd>[Robustness metrics: average bound, and the inverse of the verified error]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_robustness(self, rf_model, data_x, data_y):
+    &#34;&#34;&#34;TRUST: ROBUSTNESS. Function that computes robustness metrics of a sklearn tree-based classifier over a dataset.
+    Currently, it uses the Clique method RobustnessVerificationTreeModelsCliqueMethod from the ART360 library.
+
+    Args:
+        rf_model ([sklearn classifier]): [Trained classification model. For now, it has to be a sklearn tree-based classifier]
+        data_x ([array]): [feature array]
+        data_y ([array]): [true labels array]
+
+    Returns:
+        [float, float]: [Robustness metrics: average bound, and the inverse of the verified error]
+    &#34;&#34;&#34;
+    print(&#34;TRUST - Computing robustness metrics...&#34;)
+    rf_skmodel = SklearnClassifier(model=rf_model)
+    rt = RobustnessVerificationTreeModelsCliqueMethod(classifier=rf_skmodel)        
+    average_bound, verified_error = rt.verify(x=data_x.values, y=pd.get_dummies(data_y).values, eps_init=0.001,
+     nb_search_steps=1, max_clique=2, max_level=1)
+
+    return average_bound, (1-verified_error) # THE LARGER THE AVRG. BOUND THE BETTER, THE LOWER THE VERIFIED ERROR THE BETTER (SO WE INVERT THE ERROR)</code></pre>
+</details>
+</dd>
+<dt id="trust.Trust.Trust.compute_trust_bn"><code class="name flex">
+<span>def <span class="ident">compute_trust_bn</span></span>(<span>self, yaml_config_file)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function that instances and initializes an object of the Trust_BN class to assess the trust using a Bayesian network.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>yaml_config_file</code></strong> :&ensp;<code>[yaml module object]</code></dt>
+<dd>[yaml dict containing the user parameters, including the Bayesian network filepath and parameters]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[Trust_BN]</code></dt>
+<dd>[Trust_BN object initialized to enable the trust assessment using a provided Bayesian network]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_trust_bn(self, yaml_config_file):
+    &#34;&#34;&#34;Function that instances and initializes an object of the Trust_BN class to assess the trust using a Bayesian network.
+
+    Args:
+        yaml_config_file ([yaml module object]): [yaml dict containing the user parameters, including the Bayesian network filepath and parameters]
+
+    Returns:
+        [Trust_BN]: [Trust_BN object initialized to enable the trust assessment using a provided Bayesian network]
+    &#34;&#34;&#34;
+    with open(yaml_config_file, mode=&#39;r&#39;) as config_file:
+        yaml_config = yaml.safe_load(config_file)
+        print(&#34;INFO: Using configuration file &#34; + yaml_config_file)
+        return Trust_BN(self, yaml_config)</code></pre>
+</details>
+</dd>
+<dt id="trust.Trust.Trust.compute_uncertainty"><code class="name flex">
+<span>def <span class="ident">compute_uncertainty</span></span>(<span>self, rf_model, data_x, data_y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TRUST: UNCERTAINTY. Computes UQ360 uncertainty metrics over a provided dataset and using a provided classification model.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>rf_model</code></strong> :&ensp;<code>[sklearn classifier]</code></dt>
+<dd>[Trained classification model]</dd>
+<dt><strong><code>data_x</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[feature array]</dd>
+<dt><strong><code>data_y</code></strong> :&ensp;<code>[array]</code></dt>
+<dd>[true labels array]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[float, float]</code></dt>
+<dd>[Inverted brier score and inverted expected calibration error]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_uncertainty(self, rf_model, data_x, data_y):
+    &#34;&#34;&#34;TRUST: UNCERTAINTY. Computes UQ360 uncertainty metrics over a provided dataset and using a provided classification model.
+
+    Args:
+        rf_model ([sklearn classifier]): [Trained classification model]
+        data_x ([array]): [feature array]
+        data_y ([array]): [true labels array]
+
+    Returns:
+        [float, float]: [Inverted brier score and inverted expected calibration error]
+    &#34;&#34;&#34;
+    
+    print(&#34;TRUST - Computing uncertainty metrics...&#34;)
+    prediction = rf_model.predict(data_x)
+    prediction_proba = rf_model.predict_proba(data_x)
+    
+    brier_score = multiclass_brier_score(data_y, prediction_proba)        
+    expected_cal_error = expected_calibration_error(data_y, prediction_proba, prediction, len(set(data_y)), False)
+
+    return (1-brier_score), (1-expected_cal_error) # A &#34;cost function&#34; and an error, therefore we invert it</code></pre>
+</details>
+</dd>
+<dt id="trust.Trust.Trust.evaluate_trust"><code class="name flex">
+<span>def <span class="ident">evaluate_trust</span></span>(<span>self, yaml_config_file, computation_method)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function that assesses the trust using one of the provided evaluation methods once the trust metrics have been computed.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>yaml_config_file</code></strong> :&ensp;<code>[yaml module object]</code></dt>
+<dd>[yaml dict containing the user parameters]</dd>
+<dt><strong><code>computation_method</code></strong> :&ensp;<code>[<a title="trust.Trust.Evaluation_method" href="#trust.Trust.Evaluation_method">Evaluation_method</a>]</code></dt>
+<dd>[chosen assessment method (see class Evaluation_method)]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[Trust_Weighted_Average</code> or <code>Trust_BN]</code></dt>
+<dd>[Assessed Trust using the chosen assessment evaluation method]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def evaluate_trust(self, yaml_config_file, computation_method):
+    &#34;&#34;&#34;Function that assesses the trust using one of the provided evaluation methods once the trust metrics have been computed.
+
+    Args:
+        yaml_config_file ([yaml module object]): [yaml dict containing the user parameters]
+        computation_method ([Evaluation_method]): [chosen assessment method (see class Evaluation_method)]
+
+    Returns:
+        [Trust_Weighted_Average or Trust_BN]: [Assessed Trust using the chosen assessment evaluation method]
+    &#34;&#34;&#34;
+    with open(yaml_config_file, mode=&#39;r&#39;) as config_file:
+        yaml_config = yaml.safe_load(config_file)
+        print(&#34;INFO: Using configuration file &#34; + yaml_config_file)
+        if (computation_method is Evaluation_method.Weighted_Average):
+            return Trust_Weighted_Average(self, yaml_config)
+        elif (computation_method is Evaluation_method.Bayesian_Network):
+            return Trust_BN(self, yaml_config)</code></pre>
+</details>
+</dd>
+<dt id="trust.Trust.Trust.get_Trust_metrics_as_JSON"><code class="name flex">
+<span>def <span class="ident">get_Trust_metrics_as_JSON</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the unweighted, computed trust metrics as a JSON</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_Trust_metrics_as_JSON(self):
+    &#34;&#34;&#34;Returns the unweighted, computed trust metrics as a JSON&#34;&#34;&#34;
+    # Create Dictionary
+    trust_metrics = {
+        &#34;ABOUT&#34;: &#34;TRUST ASSESSED AND UNWEIGHTED METRICS&#34;,
+        &#34;feedback&#34;: self.feedback,                
+        &#34;performance&#34;:
+            {
+                &#34;accuracy&#34;: self.perf_accuracy,                                       
+                &#34;precision&#34;: self.perf_precision,                        
+                &#34;recall&#34;: self.perf_recall                        
+            },
+        &#34;fairness&#34;:
+            {                    
+                &#34;p_percentage&#34;: self.fair_p_percentage,                        
+                &#34;equal_opportunity&#34;: self.fair_equal_opportunity_score
+                    
+            },
+        &#34;robustness&#34;:
+            {                    
+                &#34;average_bound&#34;: self.rob_average_bound,                        
+                &#34;verified_error_inv&#34;: self.rob_verified_inv_error                        
+            },
+        &#34;explainability&#34;:
+            {                    
+                &#34;average_monotonicity_LIME&#34;: self.expl_average_monotonicity,                        
+                &#34;average_faithfulness_LIME&#34;: self.expl_average_faithfulness,                        
+                &#34;E_score_TED&#34;: self.expl_E_accuracy                              
+            },
+        &#34;uncertainty&#34;:
+            {                    
+                &#34;brier_score&#34;: self.unc_brier_inv_score,
+                &#34;expected_calibration_error_inv&#34;: self.unc_expected_cal_inv_error                    
+            }
+    }
+    return json.dumps(trust_metrics, indent=4)</code></pre>
+</details>
+</dd>
+<dt id="trust.Trust.Trust.get_performance_metrics_from_dict"><code class="name flex">
+<span>def <span class="ident">get_performance_metrics_from_dict</span></span>(<span>self, perf_dict)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TRUST: PERFORMANCE. Retrieves the main performance metrics from the performance dictionary using sklearn.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>perf_dict</code></strong> :&ensp;<code>[dict]</code></dt>
+<dd>[dictionary containing the performance metrics, returned using the classification_report function from sklearn]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[float, float, float, float]</code></dt>
+<dd>[accuracy, precision, recall and f1 metrics]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_performance_metrics_from_dict(self, perf_dict):
+    &#34;&#34;&#34;TRUST: PERFORMANCE. Retrieves the main performance metrics from the performance dictionary using sklearn.
+
+    Args:
+        perf_dict ([dict]): [dictionary containing the performance metrics, returned using the classification_report function from sklearn]
+
+    Returns:
+        [float, float, float, float]: [accuracy, precision, recall and f1 metrics]
+    &#34;&#34;&#34;
+
+    perf_accuracy = perf_dict[&#39;accuracy&#39;]
+    perf_precision = perf_dict[&#39;weighted avg&#39;][&#39;precision&#39;]
+    perf_recall = perf_dict[&#39;weighted avg&#39;][&#39;recall&#39;]
+    perf_f1 = perf_dict[&#39;weighted avg&#39;][&#39;f1-score&#39;]
+
+    return perf_accuracy, perf_precision, perf_recall, perf_f1</code></pre>
+</details>
+</dd>
+<dt id="trust.Trust.Trust.get_yaml_feedback"><code class="name flex">
+<span>def <span class="ident">get_yaml_feedback</span></span>(<span>self, yaml_config_file)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TRUST: PERFORMANCE. Function to retrieve and return the feedback unweighted value from the yaml configuration file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>yaml_config_file</code></strong> :&ensp;<code>[yaml module object]</code></dt>
+<dd>[yaml dict containing the user parameters]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[float]</code></dt>
+<dd>[unweighted feedback value]</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_yaml_feedback(self, yaml_config_file):
+    &#34;&#34;&#34;TRUST: PERFORMANCE. Function to retrieve and return the feedback unweighted value from the yaml configuration file.
+
+    Args:
+        yaml_config_file ([yaml module object]): [yaml dict containing the user parameters]
+
+    Returns:
+        [float]: [unweighted feedback value]
+    &#34;&#34;&#34;
+
+    return yaml_config_file[&#39;feedback&#39;][&#39;value&#39;]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="trust" href="index.html">trust</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="trust.Trust.Evaluation_method" href="#trust.Trust.Evaluation_method">Evaluation_method</a></code></h4>
+<ul class="">
+<li><code><a title="trust.Trust.Evaluation_method.Bayesian_Network" href="#trust.Trust.Evaluation_method.Bayesian_Network">Bayesian_Network</a></code></li>
+<li><code><a title="trust.Trust.Evaluation_method.Weighted_Average" href="#trust.Trust.Evaluation_method.Weighted_Average">Weighted_Average</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="trust.Trust.Explainability_method" href="#trust.Trust.Explainability_method">Explainability_method</a></code></h4>
+<ul class="">
+<li><code><a title="trust.Trust.Explainability_method.LIME" href="#trust.Trust.Explainability_method.LIME">LIME</a></code></li>
+<li><code><a title="trust.Trust.Explainability_method.TED" href="#trust.Trust.Explainability_method.TED">TED</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="trust.Trust.Trust" href="#trust.Trust.Trust">Trust</a></code></h4>
+<ul class="">
+<li><code><a title="trust.Trust.Trust.compute_explainability_LIME" href="#trust.Trust.Trust.compute_explainability_LIME">compute_explainability_LIME</a></code></li>
+<li><code><a title="trust.Trust.Trust.compute_explainability_TED" href="#trust.Trust.Trust.compute_explainability_TED">compute_explainability_TED</a></code></li>
+<li><code><a title="trust.Trust.Trust.compute_fairness" href="#trust.Trust.Trust.compute_fairness">compute_fairness</a></code></li>
+<li><code><a title="trust.Trust.Trust.compute_performance_dict" href="#trust.Trust.Trust.compute_performance_dict">compute_performance_dict</a></code></li>
+<li><code><a title="trust.Trust.Trust.compute_robustness" href="#trust.Trust.Trust.compute_robustness">compute_robustness</a></code></li>
+<li><code><a title="trust.Trust.Trust.compute_trust_bn" href="#trust.Trust.Trust.compute_trust_bn">compute_trust_bn</a></code></li>
+<li><code><a title="trust.Trust.Trust.compute_uncertainty" href="#trust.Trust.Trust.compute_uncertainty">compute_uncertainty</a></code></li>
+<li><code><a title="trust.Trust.Trust.evaluate_trust" href="#trust.Trust.Trust.evaluate_trust">evaluate_trust</a></code></li>
+<li><code><a title="trust.Trust.Trust.get_Trust_metrics_as_JSON" href="#trust.Trust.Trust.get_Trust_metrics_as_JSON">get_Trust_metrics_as_JSON</a></code></li>
+<li><code><a title="trust.Trust.Trust.get_performance_metrics_from_dict" href="#trust.Trust.Trust.get_performance_metrics_from_dict">get_performance_metrics_from_dict</a></code></li>
+<li><code><a title="trust.Trust.Trust.get_yaml_feedback" href="#trust.Trust.Trust.get_yaml_feedback">get_yaml_feedback</a></code></li>
+<li><code><a title="trust.Trust.Trust.load_compute_trust_with_cache" href="#trust.Trust.Trust.load_compute_trust_with_cache">load_compute_trust_with_cache</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
