@@ -1,0 +1,31 @@
+ ### TRUSTML CONFIG###
+metrics:
+    - AccuracySKL
+    - PrecisionSKL
+    - RecallSKL
+    - F1SKL
+    - ROCSKL
+    - ExplanationsAccuracyTED:
+        explainer_path: "D:/DOGO4ML-PYTHON/ted_explainer"
+        explanations_path: "D:/DOGO4ML-PYTHON/ted_explanations"
+assessment_method:
+    BayesianNetwork: # PARAMETERS FOR COMPUTING TRUST WITH A BAYESIAN NETWORK
+        bn_path: "D:/Dropbox/PhD Marti Manzano/DOGO4ML/trust bn example-red2.dne"
+        api_url: http://localhost:8080/api/ssi/assessment
+        id_trust_node: Trust
+        intervals_input_nodes:        
+            - ROCSKL: [0.45, 0.8]
+            - AccuracySKL: [0.45, 0.8]
+            - PrecisionSKL: [0.45, 0.8]
+            - F1SKL: [0.45, 0.8]
+            - ExplanationsAccuracyTED: [0.45, 0.8]
+    WeightedAverage: # WEIGHTS FOR COMPUTING TRUST WITH THE WEIGHTED AVERAGED METHOD
+        performance-0.5:
+            AccuracySKL: 0.2
+            PrecisionSKL: 0.2
+            RecallSKL: 0.2
+            F1SKL: 0.2
+            ROCSKL: 0.2                
+        explainability-0.5:                
+            ExplanationsAccuracyTED: 1
+    

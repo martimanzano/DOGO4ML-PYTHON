@@ -1,0 +1,55 @@
+ ### TRUSTML CONFIG###
+metrics:
+    - AccuracySKL
+    - PrecisionSKL
+    - RecallSKL
+    - F1SKL
+    - ROCSKL    
+    - PPercentageSKL:
+        protected_attributes: [statussex_A91,statussex_A92,statussex_A93,statussex_A94]
+        positive_class: 1
+    - EqualOpportunitySKL:
+        protected_attributes: [statussex_A91,statussex_A92,statussex_A93,statussex_A94]
+        positive_class: 1
+    - VerifiedErrorSKLTree
+    - AverageBoundSKLTree
+    - FaithfulnessLIMESKL:
+        explainer_path: "D:/DOGO4ML-PYTHON/lime_explainer"
+    - MonotonicityLIMESKL:
+        explainer_path: "D:/DOGO4ML-PYTHON/lime_explainer"
+    - InvertedExpectedCalibrationSKL
+    - InvertedBrierSKL
+assessment_method:
+    BayesianNetwork: # PARAMETERS FOR COMPUTING TRUST WITH A BAYESIAN NETWORK
+        bn_path: "D:/Dropbox/PhD Marti Manzano/DOGO4ML/trust bn example-red2.dne"
+        api_url: http://localhost:8080/api/ssi/assessment
+        id_trust_node: Trust
+        intervals_input_nodes:        
+            - ROCSKL: [0.45, 0.8]
+            - PPercentageSKL: [0.45, 0.8]
+            - EqualOpportunitySKL: [0.45, 0.8]
+            - AverageBoundSKLTree: [0.45, 0.8]
+            - VerifiedErrorSKLTree: [0.45, 0.8]
+            - MonotonicityLIMESKL: [0.45, 0.8]
+            - FaithfulnessLIMESKL: [0.45, 0.8]
+            - InvertedBrierSKL: [0.45, 0.8]
+            - InvertedExpectedCalibrationSKL: [0.45, 0.8]
+    WeightedAverage: # WEIGHTS FOR COMPUTING TRUST WITH THE WEIGHTED AVERAGED METHOD
+        performance-0.3:
+            AccuracySKL: 0.2
+            PrecisionSKL: 0.2
+            RecallSKL: 0.2
+            F1SKL: 0.2
+            ROCSKL: 0.2
+        fairness-0.1:             
+            PPercentageSKL: 0.5
+            EqualOpportunitySKL: 0.5
+        robustness-0.1:              
+            AverageBoundSKLTree: 0.6
+            VerifiedErrorSKLTree: 0.4            
+        explainability-0.35:                
+            MonotonicityLIMESKL: 0.4
+            FaithfulnessLIMESKL: 0.6
+        uncertainty-0.15:                  
+            InvertedBrierSKL: 0.6
+            InvertedExpectedCalibrationSKL: 0.4    
