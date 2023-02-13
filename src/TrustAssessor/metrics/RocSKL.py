@@ -6,13 +6,18 @@ class ROCSKL(Metric):
 
     (Extracted from sklearn documentation)
 
+    ADDITIONAL PROPERTIES:
+    multiclass_average (str): 'macro' for binary classification problems, for 
+    multiclass/multilabel targets, 'macro' or 'weighted'.
+
     Args:
         Metric (Class): Metric interface
     """
-    
-    def __init__(self):
+      
+    def __init__(self, additionalProperties):
         super().__init__()
+        self.multiclass_average = additionalProperties["multiclass_average"]
 
     def assess(self, trainedModel, dataX, dataY):
         pred = trainedModel.predict(dataX)
-        self.assessment = roc_auc_score(dataY, pred)
+        self.assessment = roc_auc_score(dataY, pred, average=self.multiclass_average)

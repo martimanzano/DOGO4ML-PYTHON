@@ -1,0 +1,31 @@
+ ### TRUSTML CONFIG###
+metrics:
+    - AccuracySKL
+    - PrecisionSKL:
+        multiclass_average: "binary"
+    - RecallSKL:
+        multiclass_average: "binary"
+    - PPercentageSKL:
+        protected_attributes: [contrib_gender]
+        positive_class: 1
+    - EqualOpportunitySKL:
+        protected_attributes: [contrib_gender]
+        positive_class: 1
+    - FaithfulnessLIMESKL:
+        explainer_path: "demos/pull_request/lime_explainer"
+    - InvertedExpectedCalibrationSKL
+    - InvertedBrierSKL
+assessment_method:
+    WeightedAverage:
+        performance-0.5:
+            AccuracySKL: 0.7
+            PrecisionSKL: 0.15
+            RecallSKL: 0.15
+        uncertainty-0.15:                  
+            InvertedBrierSKL: 0.5
+            InvertedExpectedCalibrationSKL: 0.5
+        explainability-0.2:                
+            FaithfulnessLIMESKL: 1
+        fairness-0.15:             
+            PPercentageSKL: 0.5
+            EqualOpportunitySKL: 0.5

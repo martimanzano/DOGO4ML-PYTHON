@@ -1,0 +1,30 @@
+ ### TRUSTML CONFIG###
+metrics:
+    - AccuracySKL
+    - PrecisionSKL:
+        multiclass_average: "binary"
+    - RecallSKL:
+        multiclass_average: "binary"
+    - F1SKL:
+        multiclass_average: "binary"
+    - PPercentageSKL:
+        protected_attributes: [SEX]
+        positive_class: 0
+    - EqualOpportunitySKL:
+        protected_attributes: [SEX]
+        positive_class: 0    
+    - InvertedExpectedCalibrationSKL
+    - InvertedBrierSKL
+assessment_method:
+    WeightedAverage:
+        performance-0.3:
+            AccuracySKL: 0.1
+            PrecisionSKL: 0.1
+            RecallSKL: 0.6
+            F1SKL: 0.2
+        uncertainty-0.4:                  
+            InvertedBrierSKL: 0.5
+            InvertedExpectedCalibrationSKL: 0.5        
+        fairness-0.3:             
+            PPercentageSKL: 0.5
+            EqualOpportunitySKL: 0.5

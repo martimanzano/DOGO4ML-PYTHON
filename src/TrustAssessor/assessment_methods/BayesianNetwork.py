@@ -3,19 +3,18 @@ from TrustAssessor.assessment_methods.AssessmentMethod import AssessmentMethod
 from json import dumps
 
 class BayesianNetwork(AssessmentMethod):
-    """Class that evaluates a TrustEntity using a Bayesian network, by using a BN model provided in the path specified in the YAML/JSON configuration file.
-    It requires an instance of a TrustableEntity, which contains the trust metrics already computed and unweighted.
+    """Class that implements the trust assessment using a Bayesian network in DNE format, by using a BN model previously crafted and provided in the filepath specified in the configuration file.
+    It requires to have the trust metrics already computed and unweighted.
 
     It also requires an active and listening server with the SSI-Assessment API-library deployed (https://github.com/martimanzano/SSI-assessment).
-    The endpoint shall be specified in the YAML/JSON configuration.
+    The endpoint shall be specified in the configuration file.
     """
 
     def __init__(self, additionalProperties):
-        """Retrieves the BN path and discretization intervals from the loaded YAML/JSON and prepares the object's attributes to
-        assess trust and its related components, using the trustable entity received as parameter.
+        """Retrieves the BN path and discretization intervals from the additional properties retrieved from the configuration file and prepares the instance's attributes to perform the trust assessment.
 
         Args:
-            trustable_entity (TrustableEntity): [Instanced and initialized TrustableEntity object with unweighted metrics computed]
+            additionalProperties (dict): [dictionary of parameters required by the assessment method, i.e., the BN's filepath, endpoint of the assessment service, the BN node to assess, and the discretization intervals to use]
         
         Raises:
             Exception: When assessed metrics and BN's binning intervals are not consistent
@@ -31,7 +30,7 @@ class BayesianNetwork(AssessmentMethod):
         self.intervalsInputNodes = [k for d in additionalProperties['intervals_input_nodes'] for k in d.values()]
        
     def assess(self):
-        """Calls the BN assessment service synchrounously to assess the Trust/Trust factor. Stores the response in the instance as a JSON"""
+        """Calls the BN assessment service synchrounously to assess the BN node with name equal to the "IDTrustNode" attribute. Stores the result as a JSON formatted string and as a dict containing the node's probabilitiies """
 
         if not self.compareConfigAssesssedMetricsInputs():
             raise Exception("Validation error in config file: assessed metrics and BN's input binning intervals mismatch")
@@ -43,8 +42,10 @@ class BayesianNetwork(AssessmentMethod):
             apiResponse = requests.post(url=self.APIAssessmentService, 
             json={'id_si': self.IDTrustNode, 'input_names': self.inputNames,'input_values': inputValues, 'intervals_input_nodes': self.intervalsInputNodes, 'bn_path': self.BNPath})
         
-        self.assessmentObject = apiResponse.json()
-        self.assessment = dumps(self.assessmentObject)
+        self.assessment = apiResponse.json() 
+        self.assessmentAsFormattedString = dumps(self.assessment)
+
+        return self.assessment['probsSICategories']
 
     def compareConfigAssesssedMetricsInputs(self):
         """Helper function to validate the binning intervals from the configuration dict.

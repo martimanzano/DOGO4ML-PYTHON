@@ -1,28 +1,40 @@
 class AssessmentMethod:
-    """Assessment method interface
+    """Assessment method class. Implemented assessment methods should inherit
+    this class and implement their custom constructor and assess methods.
     """
     def __init__(self):
-        """Initializes and loads parameters from the trustable entity and its configuration dict"""
+        """Initializes the relevant instance's parameters"""
+        self.assessmentAsFormattedString = None
         self.assessment = None
-        self.assessmentObject = None
         self.metrics = []
 
     def assess(self):
-        """Assesses the trustable entity using the assessment method (child class) and stores the resulting assessment
+        """Performs the trustworthiness assessment using the assessment method (child class), stores the complet assessment and returns the corresponding to the trustworthiness itself
         """
         pass
     
-    def getAssessment(self) -> str:
-        """Returns the computed assessment in a user-friendly format
+    def getAssessmentAsFormattedString(self) -> str:
+        """Returns the computed assessment as a string. Preferably formatted as JSON
+        
+        Returns:
+            dict: Metrics' assessments 
+        """
+        return self.assessmentAsFormattedString
+
+    def getAssessment(self):
+        """Returns the computed assessment as an object to enable easy access by third-parties
+
+        Returns:
+            dict: Trust assessment as an object
         """
         return self.assessment
 
-    def getAssessmentObject(self):
-        """Returns the computed assessment in a user-friendly format
-        """
-        return self.assessmentObject
-
     def getMetricsAssessmentDict(self) -> dict:
+        """Returns a dictionary of shape Metric name (str) -> Metric assessment (float)
+
+        Returns:
+            dict: Metrics' assessments
+        """
         metricNames = [metric.__class__.__name__ for metric in self.metrics]
         metricAssessments = [metric.getAssessment() for metric in self.metrics]
 

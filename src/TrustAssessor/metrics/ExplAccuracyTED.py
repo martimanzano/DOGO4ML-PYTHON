@@ -2,10 +2,12 @@ from TrustAssessor.metrics.Metric import Metric
 import pickle
 
 class ExplanationsAccuracyTED(Metric):
-    """Accuracy of the TED-enhanced classifier using a test dataset. TED is an explainability framework that leverages domain-relevant explanations in
-    the training dataset to predict both labels and explanations for new instances [#]_. (Extracted from TED_Cartesian documentation).
+    """Accuracy of a TED-enhanced classifier using a test dataset. TED is an explainability framework that leverages domain-relevant explanations in
+    the training dataset to predict both labels and explanations for new instances. (Extracted from TED_Cartesian documentation).
 
-    It requires the TrustableEntity to have a dataset of explanations (Optional parameter data_E in the TrustableEntity initializer).
+    ADDITIONAL PROPERTIES: 
+    - explainer_path (str): filepath to a TED-enhanced classified previously stored as a pickle object
+    - explanations_path (str): filepath to a pandas dataset of explanations corresponding to the dataset's instances (i.e., rows) composed of features (dataX) and targets (dataY)
 
     Args:
         Metric (Class): Metric interface

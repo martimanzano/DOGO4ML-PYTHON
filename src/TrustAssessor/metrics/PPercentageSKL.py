@@ -3,16 +3,15 @@ from TrustAssessor.metrics.Metric import Metric
 from sklego.metrics import p_percent_score
 
 class PPercentageSKL(Metric):
-    """p_percent metric of a sklearn-based classifier. The p_percent score calculates the ratio between the probability
-    of a positive outcome given the sensitive attribute (column) being true and the same probability given the sensitive
-    attribute being false.
+    """p_percent metric of a sklearn-based classifier. The p_percent score calculates the ratio between the probability of a positive outcome given the sensitive attribute (column) being true and the same probability given the sensitive attribute being false.
 
     This is especially useful to use in situations where "fairness" is a theme.
 
     (Extracted from sklego documentation)
 
-    The metric is computed for the classification model of the TrustableEntity, along with its data_x and data_y.
-    The metric is computed using the protected attributes specified by the user in the configuration YAML/JSON
+    ADDITIONAL PROPERTIES: 
+    - protected_attributes (list of str): list of sensible features
+    - positive_class (optional): privileged class (if present, 1 otherwise)
 
     Args:
         Metric (Class): Metric interface
@@ -27,7 +26,7 @@ class PPercentageSKL(Metric):
             self.positiveClass = 1
 
     def assess(self, trainedModel, dataX, dataY):        
-        print("TRUST - Computing p-percentage vector...")
+        print("Computing p-percentage vector...")
         if (self.protectedAttributes is None):
             self.assessment = 1
         else:

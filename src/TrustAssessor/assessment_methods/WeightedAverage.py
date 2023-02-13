@@ -4,42 +4,44 @@ from anytree.exporter import JsonExporter, DictExporter
 from math import isclose
 
 class WeightedAverage(AssessmentMethod):
-    """Class corresponding to the Trust assessment method as a weighted average. It uses the weights and hierarchy specified
-    in the YAML/JSON (previously loaded into the TrustableEntity). Therefore, it takes an instance of a TrustableEntity object,
-    containing the trustworthiness metrics computed and unweighted."""
+    """Class that implements the trust assessment using as a weighted average. It uses the weights and hierarchy specified in the configuration file (previously loaded into the additionalProperties constructor's parameter).
+    
+    This class is able to process arbitrary hierarchies, although the weight's sum of each level must add to 1 to ensure the assessment's consistency.
+    """
     
     def __init__(self, additionalProperties):
-        """A Trust_WA initializer, corresponding to a specific TrustableEntity
+        """Retrieves the dict containing the hierarchical tree to use from the additionalProperties parameter and prepares the instance's attributes to perform the trust assessment.
 
         Args:
-            trustable_entity (TrustableEntity): Object of type TrustableEntity for which assess the Trust as a weighted average.
-            It must have its trustworthiness metrics already computed as this class is only in charge of the weighted aggregations.
+            additionalProperties (dict): [dictionary of parameters required by the assessment method, i.e., the hierarchical tree containing weights for each level]
         """
 
         super().__init__()
         self.hierarchyTree = additionalProperties
     
     def assess(self):
-        """Assesses the TrustEntity as a weighted average and stores the assessment. To ensure the assessment's explainability and traceability,
-        this method produces a tree containing the hierarchical assessment, with the raw scores, the weights read from the TrustEntity's configuration,
-        and the weighted scores. It leverages the tree computation to the "evaluate_tree" function.
+        """Assesses the trust as a weighted average and stores the assessment. To ensure the assessment's explainability and traceability,
+        this method produces a tree containing the hierarchical assessment, with the raw weighted and unweighted metrics' assessments, as well as the upper levels of the hierarchy. It leverages the hierarchical tree computation to the "evaluate_tree" function. Stores the result as a JSON formatted string and as a dict containing the unweighted and weighted scores at each level of the tree.
         """
+
         trust_hiearchy_node = Node(name="Trust")
-        trust_hiearchy_node.weighted_score = trust_hiearchy_node.raw_score = round(self.evaluate_tree(self.hierarchyTree, trust_hiearchy_node), 2)
-        trust_hiearchy_node.weight = 1
+
+        trust_hiearchy_node.weighted_score = round(self.evaluate_tree(self.hierarchyTree, trust_hiearchy_node), 2)
 
         exporter = JsonExporter(indent=2)
-        self.assessment = exporter.export(trust_hiearchy_node)
-        self.assessmentObject = DictExporter().export(trust_hiearchy_node)
+        self.assessmentAsFormattedString = exporter.export(trust_hiearchy_node)
+        self.assessment = DictExporter().export(trust_hiearchy_node)
+
+        return trust_hiearchy_node.weighted_score
 
     def evaluate_tree(self, dict_node, hiearchy_parent_node):
-        """Recursive function that validates and assesses a certain level of the trust hierarchy as a weighted average.
+        """Recursive function that validates and assesses a certain level of the trust hierarchy tree as a weighted average.
         When such level is not a leaf node, the assessment is performed recursively. When it is a leaf node, the assessment
-        is performed by taking the raw metric's value (i.e., score) and the specified weight.
-
+        is performed by taking the raw metric's value (i.e., score) from the metrics' list and its weight extracted from the additionalProperties dict.
+ 
         Args:
             dict_node (dict): Current tree's level to evaluate
-            hiearchy_parent_node (Node): Parent node, used to link the current evaluated node with its parent
+            hiearchy_parent_node (anytree's Node): Parent node, used to link the current evaluated node with its parent
 
         Raises:
             Exception: When the hierarchy's weights are not consistent, i.e., any level of the tree does not add up to 1.

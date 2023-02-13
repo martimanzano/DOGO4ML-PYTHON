@@ -1,0 +1,44 @@
+ ### TRUSTML CONFIG###
+metrics:
+    - AccuracySKL
+    - PrecisionSKL:
+        multiclass_average: "binary"
+    - RecallSKL:
+        multiclass_average: "binary"
+    - PPercentageSKL:
+        protected_attributes: [statussex_A91,statussex_A92,statussex_A93,statussex_A94]
+        positive_class: 1
+    - EqualOpportunitySKL:
+        protected_attributes: [statussex_A91,statussex_A92,statussex_A93,statussex_A94]
+        positive_class: 1
+    - FaithfulnessLIMESKL:
+        explainer_path: "demos/german_credit/lime_explainer"
+    - InvertedExpectedCalibrationSKL
+    - InvertedBrierSKL
+assessment_method:
+    WeightedAverage:
+        performance-0.4:
+            AccuracySKL: 0.1
+            PrecisionSKL: 0.2
+            RecallSKL: 0.7
+        uncertainty-0.3:                  
+            InvertedBrierSKL: 0.5
+            InvertedExpectedCalibrationSKL: 0.5
+        explainability-0.2:                
+            FaithfulnessLIMESKL: 1
+        fairness-0.1:             
+            PPercentageSKL: 0.5
+            EqualOpportunitySKL: 0.5
+    BayesianNetwork: # PARAMETERS FOR COMPUTING TRUST WITH A BAYESIAN NETWORK
+        bn_path: "D:/DOGO4ML-PYTHON/demos/german_credit/trust bn example-red2.dne"
+        api_url: http://localhost:8080/api/ssi/assessment
+        id_trust_node: Trust
+        intervals_input_nodes:
+            - PPercentageSKL: [0.45, 0.8]
+            - EqualOpportunitySKL: [0.45, 0.8]
+            - AverageBoundSKLTree: [0.45, 0.8]
+            - VerifiedErrorSKLTree: [0.45, 0.8]
+            - MonotonicityLIMESKL: [0.45, 0.8]
+            - FaithfulnessLIMESKL: [0.45, 0.8]
+            - InvertedBrierSKL: [0.45, 0.8]
+            - InvertedExpectedCalibrationSKL: [0.45, 0.8]

@@ -6,11 +6,12 @@ from aix360.metrics import monotonicity_metric
 class MonotonicityLIMESKL(Metric):
     """Average Monotonicity metric of a sklearn classifier and a LIME explainer using the AIX360 package.
 
-    This metric measures the effect of individual features on model performance by evaluating the effect on model performance of incrementally adding each attribute in order of increasing importance. As each feature is added, the performance of the model should correspondingly increase, thereby resulting in monotonically increasing model performance. [#]_
+    This metric measures the effect of individual features on model performance by evaluating the effect on model performance of incrementally adding each attribute in order of increasing importance. As each feature is added, the performance of the model should correspondingly increase, thereby resulting in monotonically increasing model performance.
 
     (Extracted from AIX360 documentation)
 
-    It requires the TrustableEntity to have a LIME tabular explainer (Optional parameter explainer in the TrustableEntity initializer).
+    ADDITIONAL PROPERTIES: 
+    - explainer_path (str): filepath to a LIME explainer previously trained and stored as a pickle object
 
     Args:
         Metric (Class): Metric interface
@@ -23,7 +24,7 @@ class MonotonicityLIMESKL(Metric):
             self.explainer = pickle.load(explainer_path)
 
     def assess(self, trainedModel, dataX, dataY):
-        print("TRUST - Computing monotonicity metric with LIME...")
+        print("Computing monotonicity metric with LIME...")
         ncases = dataX.values.shape[0]     
         monotonicity_vector = np.zeros(ncases) 
         for i in range(ncases):
@@ -42,4 +43,3 @@ class MonotonicityLIMESKL(Metric):
             monotonicity_vector[i] = monotonicity_metric(trainedModel, dataX.values[i], coefs, base)
 
         self.assessment = np.mean(monotonicity_vector)
-    

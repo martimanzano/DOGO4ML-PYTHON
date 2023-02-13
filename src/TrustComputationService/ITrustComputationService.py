@@ -1,14 +1,19 @@
 class ITrustComputationService:
+    """TrustComputationService interface.
+    """
     def __init__(self):
         pass
 
-    def computeTrust(self, configPath, trainedModel, dataX, dataY) -> str:
+    def readTrustDefinition(self, configPath):
         pass
 
-    def getTrustAssessment(self) -> str:
+    def computeTrust(self, trainedModel, dataX, dataY):
         pass
 
-    def getTrustAssessmentAsObject(self):
+    def getTrustAssessmentAsFormattedString(self) -> str:
+        pass
+
+    def getTrustAssessment(self):
         pass
     
     def getMetricAssessment(self, metricName) -> float:
