@@ -2,7 +2,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import resample
 import pandas as pd
 
-file_dataset = 'new_pullreq.csv' # 2.2 GB DATASET FROM https://github.com/zhangxunhui/new_pullreq_msr2020
+file_dataset = 'demos/pull_request/new_pullreq.csv' # 2.2 GB DATASET FROM https://github.com/zhangxunhui/new_pullreq_msr2020
 
 # Load the data
 dataset = pd.read_csv(file_dataset, sep=",", header=0)

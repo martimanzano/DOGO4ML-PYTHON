@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>trust.metrics API documentation</title>
+<title>src.TrustAssessor.metrics API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,93 +19,89 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>trust.metrics</code></h1>
+<h1 class="title">Module <code>src.TrustAssessor.metrics</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from trust.metrics.accuracy_skl import AccuracySKL
-from trust.metrics.average_robustness_bound_skltree import AverageBoundSKLTree
-from trust.metrics.verified_robustness_error_skltree import VerifiedErrorSKLTree
-from trust.metrics.equal_opportunity_skl import EqualOpportunitySKL
-from trust.metrics.p_percentage_skl import PPercentageSKL
-from trust.metrics.explanations_accuracy_TED import ExplanationsAccuracyTED
-from trust.metrics.f1_skl import F1SKL
-from trust.metrics.faithfulness_LIME_skl import FaithfulnessLIMESKL
-from trust.metrics.inverted_brier_uncert_skl import InvertedBrierSKL
-from trust.metrics.inverted_expected_calibration_uncert_skl import InvertedExpectedCalibrationSKL
-from trust.metrics.monotonicity_LIME_skl import MonotonicityLIMESKL
-from trust.metrics.precision_skl import PrecisionSKL
-from trust.metrics.recall_skl import RecallSKL
-from trust.metrics.roc_skl import ROCSKL</code></pre>
+<pre><code class="python">from TrustAssessor.metrics.AccuracySKL import AccuracySKL
+from TrustAssessor.metrics.AverageRobBoundSKL import AverageBoundSKLTree
+from TrustAssessor.metrics.EqualOppSKL import EqualOpportunitySKL
+from TrustAssessor.metrics.ExplAccuracyTED import ExplanationsAccuracyTED
+from TrustAssessor.metrics.F1SKL import F1SKL
+from TrustAssessor.metrics.FaithfulLIMESKL import FaithfulnessLIMESKL
+from TrustAssessor.metrics.InvBrierUncertSKL import InvertedBrierSKL
+from TrustAssessor.metrics.InvExpCalUncertSKL import InvertedExpectedCalibrationSKL
+from TrustAssessor.metrics.MonotLIMESKL import MonotonicityLIMESKL
+from TrustAssessor.metrics.PPercentageSKL import PPercentageSKL
+from TrustAssessor.metrics.PrecisionSKL import PrecisionSKL
+from TrustAssessor.metrics.RecallSKL import RecallSKL
+from TrustAssessor.metrics.RocSKL import ROCSKL
+from TrustAssessor.metrics.VerRobErrorSKL import VerifiedErrorSKLTree</code></pre>
 </details>
 </section>
 <section>
 <h2 class="section-title" id="header-submodules">Sub-modules</h2>
 <dl>
-<dt><code class="name"><a title="trust.metrics.accuracy_skl" href="accuracy_skl.html">trust.metrics.accuracy_skl</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.AccuracySKL" href="AccuracySKL.html">src.TrustAssessor.metrics.AccuracySKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.average_robustness_bound_skltree" href="average_robustness_bound_skltree.html">trust.metrics.average_robustness_bound_skltree</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.AverageRobBoundSKL" href="AverageRobBoundSKL.html">src.TrustAssessor.metrics.AverageRobBoundSKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.common" href="common/index.html">trust.metrics.common</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.EqualOppSKL" href="EqualOppSKL.html">src.TrustAssessor.metrics.EqualOppSKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.equal_opportunity_skl" href="equal_opportunity_skl.html">trust.metrics.equal_opportunity_skl</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.ExplAccuracyTED" href="ExplAccuracyTED.html">src.TrustAssessor.metrics.ExplAccuracyTED</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.explanations_accuracy_TED" href="explanations_accuracy_TED.html">trust.metrics.explanations_accuracy_TED</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.F1SKL" href="F1SKL.html">src.TrustAssessor.metrics.F1SKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.f1_skl" href="f1_skl.html">trust.metrics.f1_skl</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.FaithfulLIMESKL" href="FaithfulLIMESKL.html">src.TrustAssessor.metrics.FaithfulLIMESKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.faithfulness_LIME_skl" href="faithfulness_LIME_skl.html">trust.metrics.faithfulness_LIME_skl</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.InvBrierUncertSKL" href="InvBrierUncertSKL.html">src.TrustAssessor.metrics.InvBrierUncertSKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.inverted_brier_uncert_skl" href="inverted_brier_uncert_skl.html">trust.metrics.inverted_brier_uncert_skl</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.InvExpCalUncertSKL" href="InvExpCalUncertSKL.html">src.TrustAssessor.metrics.InvExpCalUncertSKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.inverted_expected_calibration_uncert_skl" href="inverted_expected_calibration_uncert_skl.html">trust.metrics.inverted_expected_calibration_uncert_skl</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.Metric" href="Metric.html">src.TrustAssessor.metrics.Metric</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.metric" href="metric.html">trust.metrics.metric</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.MonotLIMESKL" href="MonotLIMESKL.html">src.TrustAssessor.metrics.MonotLIMESKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.monotonicity_LIME_skl" href="monotonicity_LIME_skl.html">trust.metrics.monotonicity_LIME_skl</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.PPercentageSKL" href="PPercentageSKL.html">src.TrustAssessor.metrics.PPercentageSKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.p_percentage_skl" href="p_percentage_skl.html">trust.metrics.p_percentage_skl</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.PrecisionSKL" href="PrecisionSKL.html">src.TrustAssessor.metrics.PrecisionSKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.precision_skl" href="precision_skl.html">trust.metrics.precision_skl</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.RecallSKL" href="RecallSKL.html">src.TrustAssessor.metrics.RecallSKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.recall_skl" href="recall_skl.html">trust.metrics.recall_skl</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.RocSKL" href="RocSKL.html">src.TrustAssessor.metrics.RocSKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="trust.metrics.roc_skl" href="roc_skl.html">trust.metrics.roc_skl</a></code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-<dt><code class="name"><a title="trust.metrics.verified_robustness_error_skltree" href="verified_robustness_error_skltree.html">trust.metrics.verified_robustness_error_skltree</a></code></dt>
+<dt><code class="name"><a title="src.TrustAssessor.metrics.VerRobErrorSKL" href="VerRobErrorSKL.html">src.TrustAssessor.metrics.VerRobErrorSKL</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -126,27 +122,26 @@ from trust.metrics.roc_skl import ROCSKL</code></pre>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="trust" href="../index.html">trust</a></code></li>
+<li><code><a title="src.TrustAssessor" href="../index.html">src.TrustAssessor</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-submodules">Sub-modules</a></h3>
 <ul>
-<li><code><a title="trust.metrics.accuracy_skl" href="accuracy_skl.html">trust.metrics.accuracy_skl</a></code></li>
-<li><code><a title="trust.metrics.average_robustness_bound_skltree" href="average_robustness_bound_skltree.html">trust.metrics.average_robustness_bound_skltree</a></code></li>
-<li><code><a title="trust.metrics.common" href="common/index.html">trust.metrics.common</a></code></li>
-<li><code><a title="trust.metrics.equal_opportunity_skl" href="equal_opportunity_skl.html">trust.metrics.equal_opportunity_skl</a></code></li>
-<li><code><a title="trust.metrics.explanations_accuracy_TED" href="explanations_accuracy_TED.html">trust.metrics.explanations_accuracy_TED</a></code></li>
-<li><code><a title="trust.metrics.f1_skl" href="f1_skl.html">trust.metrics.f1_skl</a></code></li>
-<li><code><a title="trust.metrics.faithfulness_LIME_skl" href="faithfulness_LIME_skl.html">trust.metrics.faithfulness_LIME_skl</a></code></li>
-<li><code><a title="trust.metrics.inverted_brier_uncert_skl" href="inverted_brier_uncert_skl.html">trust.metrics.inverted_brier_uncert_skl</a></code></li>
-<li><code><a title="trust.metrics.inverted_expected_calibration_uncert_skl" href="inverted_expected_calibration_uncert_skl.html">trust.metrics.inverted_expected_calibration_uncert_skl</a></code></li>
-<li><code><a title="trust.metrics.metric" href="metric.html">trust.metrics.metric</a></code></li>
-<li><code><a title="trust.metrics.monotonicity_LIME_skl" href="monotonicity_LIME_skl.html">trust.metrics.monotonicity_LIME_skl</a></code></li>
-<li><code><a title="trust.metrics.p_percentage_skl" href="p_percentage_skl.html">trust.metrics.p_percentage_skl</a></code></li>
-<li><code><a title="trust.metrics.precision_skl" href="precision_skl.html">trust.metrics.precision_skl</a></code></li>
-<li><code><a title="trust.metrics.recall_skl" href="recall_skl.html">trust.metrics.recall_skl</a></code></li>
-<li><code><a title="trust.metrics.roc_skl" href="roc_skl.html">trust.metrics.roc_skl</a></code></li>
-<li><code><a title="trust.metrics.verified_robustness_error_skltree" href="verified_robustness_error_skltree.html">trust.metrics.verified_robustness_error_skltree</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.AccuracySKL" href="AccuracySKL.html">src.TrustAssessor.metrics.AccuracySKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.AverageRobBoundSKL" href="AverageRobBoundSKL.html">src.TrustAssessor.metrics.AverageRobBoundSKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.EqualOppSKL" href="EqualOppSKL.html">src.TrustAssessor.metrics.EqualOppSKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.ExplAccuracyTED" href="ExplAccuracyTED.html">src.TrustAssessor.metrics.ExplAccuracyTED</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.F1SKL" href="F1SKL.html">src.TrustAssessor.metrics.F1SKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.FaithfulLIMESKL" href="FaithfulLIMESKL.html">src.TrustAssessor.metrics.FaithfulLIMESKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.InvBrierUncertSKL" href="InvBrierUncertSKL.html">src.TrustAssessor.metrics.InvBrierUncertSKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.InvExpCalUncertSKL" href="InvExpCalUncertSKL.html">src.TrustAssessor.metrics.InvExpCalUncertSKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.Metric" href="Metric.html">src.TrustAssessor.metrics.Metric</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.MonotLIMESKL" href="MonotLIMESKL.html">src.TrustAssessor.metrics.MonotLIMESKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.PPercentageSKL" href="PPercentageSKL.html">src.TrustAssessor.metrics.PPercentageSKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.PrecisionSKL" href="PrecisionSKL.html">src.TrustAssessor.metrics.PrecisionSKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.RecallSKL" href="RecallSKL.html">src.TrustAssessor.metrics.RecallSKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.RocSKL" href="RocSKL.html">src.TrustAssessor.metrics.RocSKL</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics.VerRobErrorSKL" href="VerRobErrorSKL.html">src.TrustAssessor.metrics.VerRobErrorSKL</a></code></li>
 </ul>
 </li>
 </ul>

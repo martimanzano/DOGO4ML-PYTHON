@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>trust.metrics.explanations_accuracy_TED API documentation</title>
+<title>src.TrustAssessor.metrics.ExplAccuracyTED API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,29 +19,41 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>trust.metrics.explanations_accuracy_TED</code></h1>
+<h1 class="title">Module <code>src.TrustAssessor.metrics.ExplAccuracyTED</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from trust.metrics.metric import Metric
+<pre><code class="python">from TrustAssessor.metrics.Metric import Metric
+import pickle
 
 class ExplanationsAccuracyTED(Metric):
-    &#34;&#34;&#34;Accuracy of the TED-enhanced classifier using a test dataset. TED is an explainability framework that leverages domain-relevant explanations in
-    the training dataset to predict both labels and explanations for new instances [#]_. (Extracted from TED_Cartesian documentation).
+    &#34;&#34;&#34;Accuracy of a TED-enhanced classifier using a test dataset. TED is an explainability framework that leverages domain-relevant explanations in
+    the training dataset to predict both labels and explanations for new instances. (Extracted from TED_Cartesian documentation).
 
-    It requires the TrustableEntity to have a dataset of explanations (Optional parameter data_E in the TrustableEntity initializer).
+    ADDITIONAL PROPERTIES: 
+    - explainer_path (str): filepath to a TED-enhanced classified previously stored as a pickle object
+    - explanations_path (str): filepath to a pandas dataset of explanations corresponding to the dataset&#39;s instances (i.e., rows) composed of features (dataX) and targets (dataY)
 
     Args:
         Metric (Class): Metric interface
     &#34;&#34;&#34;
     
-    def assess(trustable_entity):
-        YE_accuracy, Y_accuracy, E_accuracy = trustable_entity.explainer.score(
-            trustable_entity.data_x, trustable_entity.data_y, trustable_entity.data_E)
-        return YE_accuracy</code></pre>
+    def __init__(self, additionalProperties):
+        super().__init__()
+
+        with open(additionalProperties[&#34;explainer_path&#34;], &#39;rb&#39;) as explainer_path:
+            self.explainer = pickle.load(explainer_path)
+
+        with open(additionalProperties[&#34;explanations_path&#34;], &#39;rb&#39;) as explanations_path:
+            self.data_E = pickle.load(explanations_path)
+
+    def assess(self, trainedModel, dataX, dataY):
+        YE_accuracy, Y_accuracy, E_accuracy = self.explainer.score(
+            dataX, dataY, self.data_E)
+        self.assessment = YE_accuracy</code></pre>
 </details>
 </section>
 <section>
@@ -53,13 +65,16 @@ class ExplanationsAccuracyTED(Metric):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="trust.metrics.explanations_accuracy_TED.ExplanationsAccuracyTED"><code class="flex name class">
+<dt id="src.TrustAssessor.metrics.ExplAccuracyTED.ExplanationsAccuracyTED"><code class="flex name class">
 <span>class <span class="ident">ExplanationsAccuracyTED</span></span>
+<span>(</span><span>additionalProperties)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Accuracy of the TED-enhanced classifier using a test dataset. TED is an explainability framework that leverages domain-relevant explanations in
-the training dataset to predict both labels and explanations for new instances [#]_. (Extracted from TED_Cartesian documentation).</p>
-<p>It requires the TrustableEntity to have a dataset of explanations (Optional parameter data_E in the TrustableEntity initializer).</p>
+<div class="desc"><p>Accuracy of a TED-enhanced classifier using a test dataset. TED is an explainability framework that leverages domain-relevant explanations in
+the training dataset to predict both labels and explanations for new instances. (Extracted from TED_Cartesian documentation).</p>
+<p>ADDITIONAL PROPERTIES:
+- explainer_path (str): filepath to a TED-enhanced classified previously stored as a pickle object
+- explanations_path (str): filepath to a pandas dataset of explanations corresponding to the dataset's instances (i.e., rows) composed of features (dataX) and targets (dataY)</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>Metric</code></strong> :&ensp;<code>Class</code></dt>
@@ -70,32 +85,53 @@ the training dataset to predict both labels and explanations for new instances [
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class ExplanationsAccuracyTED(Metric):
-    &#34;&#34;&#34;Accuracy of the TED-enhanced classifier using a test dataset. TED is an explainability framework that leverages domain-relevant explanations in
-    the training dataset to predict both labels and explanations for new instances [#]_. (Extracted from TED_Cartesian documentation).
+    &#34;&#34;&#34;Accuracy of a TED-enhanced classifier using a test dataset. TED is an explainability framework that leverages domain-relevant explanations in
+    the training dataset to predict both labels and explanations for new instances. (Extracted from TED_Cartesian documentation).
 
-    It requires the TrustableEntity to have a dataset of explanations (Optional parameter data_E in the TrustableEntity initializer).
+    ADDITIONAL PROPERTIES: 
+    - explainer_path (str): filepath to a TED-enhanced classified previously stored as a pickle object
+    - explanations_path (str): filepath to a pandas dataset of explanations corresponding to the dataset&#39;s instances (i.e., rows) composed of features (dataX) and targets (dataY)
 
     Args:
         Metric (Class): Metric interface
     &#34;&#34;&#34;
     
-    def assess(trustable_entity):
-        YE_accuracy, Y_accuracy, E_accuracy = trustable_entity.explainer.score(
-            trustable_entity.data_x, trustable_entity.data_y, trustable_entity.data_E)
-        return YE_accuracy</code></pre>
+    def __init__(self, additionalProperties):
+        super().__init__()
+
+        with open(additionalProperties[&#34;explainer_path&#34;], &#39;rb&#39;) as explainer_path:
+            self.explainer = pickle.load(explainer_path)
+
+        with open(additionalProperties[&#34;explanations_path&#34;], &#39;rb&#39;) as explanations_path:
+            self.data_E = pickle.load(explanations_path)
+
+    def assess(self, trainedModel, dataX, dataY):
+        YE_accuracy, Y_accuracy, E_accuracy = self.explainer.score(
+            dataX, dataY, self.data_E)
+        self.assessment = YE_accuracy</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="trust.metrics.metric.Metric" href="metric.html#trust.metrics.metric.Metric">Metric</a></li>
+<li>TrustAssessor.metrics.Metric.Metric</li>
 </ul>
-<h3>Inherited members</h3>
-<ul class="hlist">
-<li><code><b><a title="trust.metrics.metric.Metric" href="metric.html#trust.metrics.metric.Metric">Metric</a></b></code>:
-<ul class="hlist">
-<li><code><a title="trust.metrics.metric.Metric.assess" href="metric.html#trust.metrics.metric.Metric.assess">assess</a></code></li>
-</ul>
-</li>
-</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.TrustAssessor.metrics.ExplAccuracyTED.ExplanationsAccuracyTED.assess"><code class="name flex">
+<span>def <span class="ident">assess</span></span>(<span>self, trainedModel, dataX, dataY)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Assessment of the metric using the trained model, dataset predictors and targets passed as parameters.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def assess(self, trainedModel, dataX, dataY):
+    YE_accuracy, Y_accuracy, E_accuracy = self.explainer.score(
+        dataX, dataY, self.data_E)
+    self.assessment = YE_accuracy</code></pre>
+</details>
+</dd>
+</dl>
 </dd>
 </dl>
 </section>
@@ -108,13 +144,16 @@ the training dataset to predict both labels and explanations for new instances [
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="trust.metrics" href="index.html">trust.metrics</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics" href="index.html">src.TrustAssessor.metrics</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="trust.metrics.explanations_accuracy_TED.ExplanationsAccuracyTED" href="#trust.metrics.explanations_accuracy_TED.ExplanationsAccuracyTED">ExplanationsAccuracyTED</a></code></h4>
+<h4><code><a title="src.TrustAssessor.metrics.ExplAccuracyTED.ExplanationsAccuracyTED" href="#src.TrustAssessor.metrics.ExplAccuracyTED.ExplanationsAccuracyTED">ExplanationsAccuracyTED</a></code></h4>
+<ul class="">
+<li><code><a title="src.TrustAssessor.metrics.ExplAccuracyTED.ExplanationsAccuracyTED.assess" href="#src.TrustAssessor.metrics.ExplAccuracyTED.ExplanationsAccuracyTED.assess">assess</a></code></li>
+</ul>
 </li>
 </ul>
 </li>

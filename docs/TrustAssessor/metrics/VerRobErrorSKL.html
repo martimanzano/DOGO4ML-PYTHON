@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>trust.metrics.average_robustness_bound_skltree API documentation</title>
+<title>src.TrustAssessor.metrics.VerRobErrorSKL API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,45 +19,41 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>trust.metrics.average_robustness_bound_skltree</code></h1>
+<h1 class="title">Module <code>src.TrustAssessor.metrics.VerRobErrorSKL</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from trust.metrics.common.average_robustness_verified_error import AverageBoundVerifiedError
-#from trust.metrics.verified_robustness_error_skltree import VerifiedErrorSKLTree
+<pre><code class="python">from TrustAssessor.metrics.Metric import Metric
+from art.metrics import RobustnessVerificationTreeModelsCliqueMethod
+from art.estimators.classification import SklearnClassifier
+import pandas as pd
 
-class AverageBoundSKLTree(AverageBoundVerifiedError):
-    &#34;&#34;&#34;Average robustness bound of a decision-tree-based model on the provided dataset (TrustableEntity -&gt; data_x, data_y) using the ART package.
+class VerifiedErrorSKLTree(Metric):
+    &#34;&#34;&#34;Verified error of a decision-tree sklearn-based model on the provided dataset (dataX, dataY) using the ART package.
 
-    As it shares code and computation with the verified error metric, it inherits the parent class AverageBoundVerifiedError and leverages the computation of both metrics to this class. It caches the verified error metric into the precomputed metrics dict to reduce computation time.
-
-    (Extracted from sklearn documentation)
+    This metric is typically used to verify the robustness of the classifier on the provided dataset. Although it is a cost function, its assessment is inverted so it can be treated as the rest of metrics (i.e., as a percentage).
+   
+    ADDITIONAL PROPERTIES:
+    None
 
     Args:
-        AverageBoundVerifiedError (Class): AverageBoundVerifiedError interface (common code to various metrics)
+        Metric (Class): Metric interface
     &#34;&#34;&#34;
     
-    def assess(trustable_entity):
-        if __class__.__name__ in trustable_entity.precomputed_metrics:
-            return trustable_entity.precomputed_metrics[__class__.__name__]
-        else:
-            average_bound, verified_error = super(AverageBoundSKLTree, AverageBoundSKLTree).assess(trustable_entity)
+    def __init__(self):
+        super().__init__()
 
-            from trust.metrics.verified_robustness_error_skltree import VerifiedErrorSKLTree
-            trustable_entity.precomputed_metrics[VerifiedErrorSKLTree.__name__] = verified_error
-            return average_bound
-    
-    # def assess(trustable_entity):
-    #     print(&#34;TRUST - Computing average robustness bound...&#34;)
-    #     rf_skmodel = SklearnClassifier(model=trustable_entity.trained_model)
-    #     rt = RobustnessVerificationTreeModelsCliqueMethod(classifier=rf_skmodel)        
-    #     average_bound, verified_error = rt.verify(x=trustable_entity.data_x.values, y=pd.get_dummies(trustable_entity.data_y).values, eps_init=0.001, 
-    #     nb_search_steps=1, max_clique=2, max_level=1)
+    def assess(self, trainedModel, dataX, dataY):
+        print(&#34;Computing verified error...&#34;)
+        rf_skmodel = SklearnClassifier(model=trainedModel)
+        rt = RobustnessVerificationTreeModelsCliqueMethod(classifier=rf_skmodel)        
+        average_bound, verified_error = rt.verify(x=dataX.values, y=pd.get_dummies(dataY).values, eps_init=0.001,
+         nb_search_steps=1, max_clique=2, max_level=1)
 
-    #     return average_bound</code></pre>
+        self.assessment = (1-verified_error)</code></pre>
 </details>
 </section>
 <section>
@@ -69,65 +65,73 @@ class AverageBoundSKLTree(AverageBoundVerifiedError):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="trust.metrics.average_robustness_bound_skltree.AverageBoundSKLTree"><code class="flex name class">
-<span>class <span class="ident">AverageBoundSKLTree</span></span>
+<dt id="src.TrustAssessor.metrics.VerRobErrorSKL.VerifiedErrorSKLTree"><code class="flex name class">
+<span>class <span class="ident">VerifiedErrorSKLTree</span></span>
 </code></dt>
 <dd>
-<div class="desc"><p>Average robustness bound of a decision-tree-based model on the provided dataset (TrustableEntity -&gt; data_x, data_y) using the ART package.</p>
-<p>As it shares code and computation with the verified error metric, it inherits the parent class AverageBoundVerifiedError and leverages the computation of both metrics to this class. It caches the verified error metric into the precomputed metrics dict to reduce computation time.</p>
-<p>(Extracted from sklearn documentation)</p>
+<div class="desc"><p>Verified error of a decision-tree sklearn-based model on the provided dataset (dataX, dataY) using the ART package.</p>
+<p>This metric is typically used to verify the robustness of the classifier on the provided dataset. Although it is a cost function, its assessment is inverted so it can be treated as the rest of metrics (i.e., as a percentage).</p>
+<p>ADDITIONAL PROPERTIES:
+None</p>
 <h2 id="args">Args</h2>
 <dl>
-<dt><strong><code>AverageBoundVerifiedError</code></strong> :&ensp;<code>Class</code></dt>
-<dd>AverageBoundVerifiedError interface (common code to various metrics)</dd>
+<dt><strong><code>Metric</code></strong> :&ensp;<code>Class</code></dt>
+<dd>Metric interface</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class AverageBoundSKLTree(AverageBoundVerifiedError):
-    &#34;&#34;&#34;Average robustness bound of a decision-tree-based model on the provided dataset (TrustableEntity -&gt; data_x, data_y) using the ART package.
+<pre><code class="python">class VerifiedErrorSKLTree(Metric):
+    &#34;&#34;&#34;Verified error of a decision-tree sklearn-based model on the provided dataset (dataX, dataY) using the ART package.
 
-    As it shares code and computation with the verified error metric, it inherits the parent class AverageBoundVerifiedError and leverages the computation of both metrics to this class. It caches the verified error metric into the precomputed metrics dict to reduce computation time.
-
-    (Extracted from sklearn documentation)
+    This metric is typically used to verify the robustness of the classifier on the provided dataset. Although it is a cost function, its assessment is inverted so it can be treated as the rest of metrics (i.e., as a percentage).
+   
+    ADDITIONAL PROPERTIES:
+    None
 
     Args:
-        AverageBoundVerifiedError (Class): AverageBoundVerifiedError interface (common code to various metrics)
+        Metric (Class): Metric interface
     &#34;&#34;&#34;
     
-    def assess(trustable_entity):
-        if __class__.__name__ in trustable_entity.precomputed_metrics:
-            return trustable_entity.precomputed_metrics[__class__.__name__]
-        else:
-            average_bound, verified_error = super(AverageBoundSKLTree, AverageBoundSKLTree).assess(trustable_entity)
+    def __init__(self):
+        super().__init__()
 
-            from trust.metrics.verified_robustness_error_skltree import VerifiedErrorSKLTree
-            trustable_entity.precomputed_metrics[VerifiedErrorSKLTree.__name__] = verified_error
-            return average_bound
-    
-    # def assess(trustable_entity):
-    #     print(&#34;TRUST - Computing average robustness bound...&#34;)
-    #     rf_skmodel = SklearnClassifier(model=trustable_entity.trained_model)
-    #     rt = RobustnessVerificationTreeModelsCliqueMethod(classifier=rf_skmodel)        
-    #     average_bound, verified_error = rt.verify(x=trustable_entity.data_x.values, y=pd.get_dummies(trustable_entity.data_y).values, eps_init=0.001, 
-    #     nb_search_steps=1, max_clique=2, max_level=1)
+    def assess(self, trainedModel, dataX, dataY):
+        print(&#34;Computing verified error...&#34;)
+        rf_skmodel = SklearnClassifier(model=trainedModel)
+        rt = RobustnessVerificationTreeModelsCliqueMethod(classifier=rf_skmodel)        
+        average_bound, verified_error = rt.verify(x=dataX.values, y=pd.get_dummies(dataY).values, eps_init=0.001,
+         nb_search_steps=1, max_clique=2, max_level=1)
 
-    #     return average_bound</code></pre>
+        self.assessment = (1-verified_error)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="trust.metrics.common.average_robustness_verified_error.AverageBoundVerifiedError" href="common/average_robustness_verified_error.html#trust.metrics.common.average_robustness_verified_error.AverageBoundVerifiedError">AverageBoundVerifiedError</a></li>
-<li><a title="trust.metrics.metric.Metric" href="metric.html#trust.metrics.metric.Metric">Metric</a></li>
+<li>TrustAssessor.metrics.Metric.Metric</li>
 </ul>
-<h3>Inherited members</h3>
-<ul class="hlist">
-<li><code><b><a title="trust.metrics.common.average_robustness_verified_error.AverageBoundVerifiedError" href="common/average_robustness_verified_error.html#trust.metrics.common.average_robustness_verified_error.AverageBoundVerifiedError">AverageBoundVerifiedError</a></b></code>:
-<ul class="hlist">
-<li><code><a title="trust.metrics.common.average_robustness_verified_error.AverageBoundVerifiedError.assess" href="metric.html#trust.metrics.metric.Metric.assess">assess</a></code></li>
-</ul>
-</li>
-</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.TrustAssessor.metrics.VerRobErrorSKL.VerifiedErrorSKLTree.assess"><code class="name flex">
+<span>def <span class="ident">assess</span></span>(<span>self, trainedModel, dataX, dataY)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Assessment of the metric using the trained model, dataset predictors and targets passed as parameters.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def assess(self, trainedModel, dataX, dataY):
+    print(&#34;Computing verified error...&#34;)
+    rf_skmodel = SklearnClassifier(model=trainedModel)
+    rt = RobustnessVerificationTreeModelsCliqueMethod(classifier=rf_skmodel)        
+    average_bound, verified_error = rt.verify(x=dataX.values, y=pd.get_dummies(dataY).values, eps_init=0.001,
+     nb_search_steps=1, max_clique=2, max_level=1)
+
+    self.assessment = (1-verified_error)</code></pre>
+</details>
+</dd>
+</dl>
 </dd>
 </dl>
 </section>
@@ -140,13 +144,16 @@ class AverageBoundSKLTree(AverageBoundVerifiedError):
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="trust.metrics" href="index.html">trust.metrics</a></code></li>
+<li><code><a title="src.TrustAssessor.metrics" href="index.html">src.TrustAssessor.metrics</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="trust.metrics.average_robustness_bound_skltree.AverageBoundSKLTree" href="#trust.metrics.average_robustness_bound_skltree.AverageBoundSKLTree">AverageBoundSKLTree</a></code></h4>
+<h4><code><a title="src.TrustAssessor.metrics.VerRobErrorSKL.VerifiedErrorSKLTree" href="#src.TrustAssessor.metrics.VerRobErrorSKL.VerifiedErrorSKLTree">VerifiedErrorSKLTree</a></code></h4>
+<ul class="">
+<li><code><a title="src.TrustAssessor.metrics.VerRobErrorSKL.VerifiedErrorSKLTree.assess" href="#src.TrustAssessor.metrics.VerRobErrorSKL.VerifiedErrorSKLTree.assess">assess</a></code></li>
+</ul>
 </li>
 </ul>
 </li>

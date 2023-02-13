@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>trust.metrics.inverted_brier_uncert_skl API documentation</title>
+<title>src.TrustConfigurator.ConfigurationReader API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,44 +19,45 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>trust.metrics.inverted_brier_uncert_skl</code></h1>
+<h1 class="title">Module <code>src.TrustConfigurator.ConfigurationReader</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from trust.metrics.common.inverted_brier_expected_calibration import InvertedBrierExpectedCalibration
+<pre><code class="python">import yaml
 
-
-class InvertedBrierSKL(InvertedBrierExpectedCalibration):
-    &#34;&#34;&#34;Inverted brier score metric of a sklearn classifier using UQ360.    
-
-    As it shares code and computation with the inverted expected calibration error metric, it inherits the parent class InvertedBrierExpectedCalibration and leverages the computation of both metrics to this class. It caches the inverted expected calibration error metric metric into the precomputed metrics dict to reduce computation time.   
-    
-    Args:
-        InvertedBrierExpectedCalibration (Class): InvertedBrierExpectedCalibration interface (common code to various metrics)
+class ConfigurationReader():
+    &#34;&#34;&#34;Class used by the TrustFactory to read the configuration
+    file and retrieve the required information for the trust
+    assessment.
     &#34;&#34;&#34;
     
-    def assess(trustable_entity):
-        if __class__.__name__ in trustable_entity.precomputed_metrics:
-            return trustable_entity.precomputed_metrics[__class__.__name__]
-        else:
-            inverted_brier_score, inverted_expected_cal_error = super(InvertedBrierSKL, InvertedBrierSKL).assess(trustable_entity)
+    def __init__(self, configPath):
+        &#34;&#34;&#34;
+        Stores the parsed yaml configuration file as a dictionary.
+        &#34;&#34;&#34; 
+        with open(configPath, mode=&#39;r&#39;) as config_file:            
+            self.parsedConfig = yaml.safe_load(config_file)
 
-            from trust.metrics.inverted_expected_calibration_uncert_skl import InvertedExpectedCalibrationSKL
-            trustable_entity.precomputed_metrics[InvertedExpectedCalibrationSKL.__name__] = inverted_expected_cal_error
-            return inverted_brier_score
+    def readMetricsFromFile(self) -&gt; dict:
+        &#34;&#34;&#34;Returns the data related to the metrics&#39; assessment
+        from the loaded configuration file
 
+        Returns:
+            dict: metrics&#39; required data
+        &#34;&#34;&#34;
+        return self.parsedConfig[&#39;metrics&#39;]
+    
+    def readAssessmentMethodFromFile(self) -&gt; dict:
+        &#34;&#34;&#34;Returns the data related to the assessment
+        method from the loaded configuration file
 
-    # def assess(trustable_entity):
-    #     print(&#34;TRUST - Computing inverted brier uncertainty metric...&#34;)
-    #     prediction = trustable_entity.trained_model.predict(trustable_entity.data_x)
-    #     prediction_proba = trustable_entity.trained_model.predict_proba(trustable_entity.data_x)
-        
-    #     brier_score = multiclass_brier_score(trustable_entity.data_y, prediction_proba)        
-
-    #     return (1-brier_score)</code></pre>
+        Returns:
+            dict: assessment method&#39;s required data
+        &#34;&#34;&#34;
+        return self.parsedConfig[&#39;assessment_method&#39;]</code></pre>
 </details>
 </section>
 <section>
@@ -68,65 +69,103 @@ class InvertedBrierSKL(InvertedBrierExpectedCalibration):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="trust.metrics.inverted_brier_uncert_skl.InvertedBrierSKL"><code class="flex name class">
-<span>class <span class="ident">InvertedBrierSKL</span></span>
+<dt id="src.TrustConfigurator.ConfigurationReader.ConfigurationReader"><code class="flex name class">
+<span>class <span class="ident">ConfigurationReader</span></span>
+<span>(</span><span>configPath)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Inverted brier score metric of a sklearn classifier using UQ360.
-</p>
-<p>As it shares code and computation with the inverted expected calibration error metric, it inherits the parent class InvertedBrierExpectedCalibration and leverages the computation of both metrics to this class. It caches the inverted expected calibration error metric metric into the precomputed metrics dict to reduce computation time.
-</p>
-<h2 id="args">Args</h2>
+<div class="desc"><p>Class used by the TrustFactory to read the configuration
+file and retrieve the required information for the trust
+assessment.</p>
+<p>Stores the parsed yaml configuration file as a dictionary.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConfigurationReader():
+    &#34;&#34;&#34;Class used by the TrustFactory to read the configuration
+    file and retrieve the required information for the trust
+    assessment.
+    &#34;&#34;&#34;
+    
+    def __init__(self, configPath):
+        &#34;&#34;&#34;
+        Stores the parsed yaml configuration file as a dictionary.
+        &#34;&#34;&#34; 
+        with open(configPath, mode=&#39;r&#39;) as config_file:            
+            self.parsedConfig = yaml.safe_load(config_file)
+
+    def readMetricsFromFile(self) -&gt; dict:
+        &#34;&#34;&#34;Returns the data related to the metrics&#39; assessment
+        from the loaded configuration file
+
+        Returns:
+            dict: metrics&#39; required data
+        &#34;&#34;&#34;
+        return self.parsedConfig[&#39;metrics&#39;]
+    
+    def readAssessmentMethodFromFile(self) -&gt; dict:
+        &#34;&#34;&#34;Returns the data related to the assessment
+        method from the loaded configuration file
+
+        Returns:
+            dict: assessment method&#39;s required data
+        &#34;&#34;&#34;
+        return self.parsedConfig[&#39;assessment_method&#39;]</code></pre>
+</details>
+<h3>Methods</h3>
 <dl>
-<dt><strong><code>InvertedBrierExpectedCalibration</code></strong> :&ensp;<code>Class</code></dt>
-<dd>InvertedBrierExpectedCalibration interface (common code to various metrics)</dd>
+<dt id="src.TrustConfigurator.ConfigurationReader.ConfigurationReader.readAssessmentMethodFromFile"><code class="name flex">
+<span>def <span class="ident">readAssessmentMethodFromFile</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the data related to the assessment
+method from the loaded configuration file</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>assessment method's required data</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class InvertedBrierSKL(InvertedBrierExpectedCalibration):
-    &#34;&#34;&#34;Inverted brier score metric of a sklearn classifier using UQ360.    
+<pre><code class="python">def readAssessmentMethodFromFile(self) -&gt; dict:
+    &#34;&#34;&#34;Returns the data related to the assessment
+    method from the loaded configuration file
 
-    As it shares code and computation with the inverted expected calibration error metric, it inherits the parent class InvertedBrierExpectedCalibration and leverages the computation of both metrics to this class. It caches the inverted expected calibration error metric metric into the precomputed metrics dict to reduce computation time.   
-    
-    Args:
-        InvertedBrierExpectedCalibration (Class): InvertedBrierExpectedCalibration interface (common code to various metrics)
+    Returns:
+        dict: assessment method&#39;s required data
     &#34;&#34;&#34;
-    
-    def assess(trustable_entity):
-        if __class__.__name__ in trustable_entity.precomputed_metrics:
-            return trustable_entity.precomputed_metrics[__class__.__name__]
-        else:
-            inverted_brier_score, inverted_expected_cal_error = super(InvertedBrierSKL, InvertedBrierSKL).assess(trustable_entity)
-
-            from trust.metrics.inverted_expected_calibration_uncert_skl import InvertedExpectedCalibrationSKL
-            trustable_entity.precomputed_metrics[InvertedExpectedCalibrationSKL.__name__] = inverted_expected_cal_error
-            return inverted_brier_score
-
-
-    # def assess(trustable_entity):
-    #     print(&#34;TRUST - Computing inverted brier uncertainty metric...&#34;)
-    #     prediction = trustable_entity.trained_model.predict(trustable_entity.data_x)
-    #     prediction_proba = trustable_entity.trained_model.predict_proba(trustable_entity.data_x)
-        
-    #     brier_score = multiclass_brier_score(trustable_entity.data_y, prediction_proba)        
-
-    #     return (1-brier_score)</code></pre>
+    return self.parsedConfig[&#39;assessment_method&#39;]</code></pre>
 </details>
-<h3>Ancestors</h3>
-<ul class="hlist">
-<li><a title="trust.metrics.common.inverted_brier_expected_calibration.InvertedBrierExpectedCalibration" href="common/inverted_brier_expected_calibration.html#trust.metrics.common.inverted_brier_expected_calibration.InvertedBrierExpectedCalibration">InvertedBrierExpectedCalibration</a></li>
-<li><a title="trust.metrics.metric.Metric" href="metric.html#trust.metrics.metric.Metric">Metric</a></li>
-</ul>
-<h3>Inherited members</h3>
-<ul class="hlist">
-<li><code><b><a title="trust.metrics.common.inverted_brier_expected_calibration.InvertedBrierExpectedCalibration" href="common/inverted_brier_expected_calibration.html#trust.metrics.common.inverted_brier_expected_calibration.InvertedBrierExpectedCalibration">InvertedBrierExpectedCalibration</a></b></code>:
-<ul class="hlist">
-<li><code><a title="trust.metrics.common.inverted_brier_expected_calibration.InvertedBrierExpectedCalibration.assess" href="metric.html#trust.metrics.metric.Metric.assess">assess</a></code></li>
-</ul>
-</li>
-</ul>
+</dd>
+<dt id="src.TrustConfigurator.ConfigurationReader.ConfigurationReader.readMetricsFromFile"><code class="name flex">
+<span>def <span class="ident">readMetricsFromFile</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the data related to the metrics' assessment
+from the loaded configuration file</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>metrics' required data</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def readMetricsFromFile(self) -&gt; dict:
+    &#34;&#34;&#34;Returns the data related to the metrics&#39; assessment
+    from the loaded configuration file
+
+    Returns:
+        dict: metrics&#39; required data
+    &#34;&#34;&#34;
+    return self.parsedConfig[&#39;metrics&#39;]</code></pre>
+</details>
+</dd>
+</dl>
 </dd>
 </dl>
 </section>
@@ -139,13 +178,17 @@ class InvertedBrierSKL(InvertedBrierExpectedCalibration):
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="trust.metrics" href="index.html">trust.metrics</a></code></li>
+<li><code><a title="src.TrustConfigurator" href="index.html">src.TrustConfigurator</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="trust.metrics.inverted_brier_uncert_skl.InvertedBrierSKL" href="#trust.metrics.inverted_brier_uncert_skl.InvertedBrierSKL">InvertedBrierSKL</a></code></h4>
+<h4><code><a title="src.TrustConfigurator.ConfigurationReader.ConfigurationReader" href="#src.TrustConfigurator.ConfigurationReader.ConfigurationReader">ConfigurationReader</a></code></h4>
+<ul class="">
+<li><code><a title="src.TrustConfigurator.ConfigurationReader.ConfigurationReader.readAssessmentMethodFromFile" href="#src.TrustConfigurator.ConfigurationReader.ConfigurationReader.readAssessmentMethodFromFile">readAssessmentMethodFromFile</a></code></li>
+<li><code><a title="src.TrustConfigurator.ConfigurationReader.ConfigurationReader.readMetricsFromFile" href="#src.TrustConfigurator.ConfigurationReader.ConfigurationReader.readMetricsFromFile">readMetricsFromFile</a></code></li>
+</ul>
 </li>
 </ul>
 </li>
