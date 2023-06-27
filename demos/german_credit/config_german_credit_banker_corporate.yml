@@ -12,10 +12,23 @@ metrics:
         protected_attributes: [statussex_A91,statussex_A92,statussex_A93,statussex_A94]
         positive_class: 1
     - FaithfulnessLIMESKL:
-        explainer_path: "demos/german_credit/lime_explainer"
+        explainer_path: "demos/german_credit/lime_explainer" # remove "demos/" if running from notebook
     - InvertedExpectedCalibrationSKL
     - InvertedBrierSKL
 assessment_method:
+    BayesianNetwork: # PARAMETERS FOR COMPUTING TRUST WITH A BAYESIAN NETWORK
+        bn_path: "demos/german_credit/german_credit_BN.dne" # remove "demos/" if running from notebook
+        api_url: http://localhost:8080/api/ssi/assessment
+        id_trust_node: Trust
+        intervals_input_nodes:
+            - AccuracySKL: [0.45, 0.8]
+            - PrecisionSKL: [0.45, 0.8]
+            - RecallSKL: [0.45, 0.8]
+            - PPercentageSKL: [0.45, 0.8]
+            - EqualOpportunitySKL: [0.45, 0.8]
+            - FaithfulnessLIMESKL: [0.45, 0.8]
+            - InvertedExpectedCalibrationSKL: [0.45, 0.8]
+            - InvertedBrierSKL: [0.45, 0.8]
     WeightedAverage:
         performance-0.4:
             AccuracySKL: 0.1
@@ -29,16 +42,4 @@ assessment_method:
         fairness-0.1:             
             PPercentageSKL: 0.5
             EqualOpportunitySKL: 0.5
-    BayesianNetwork: # PARAMETERS FOR COMPUTING TRUST WITH A BAYESIAN NETWORK
-        bn_path: "D:/DOGO4ML-PYTHON/demos/german_credit/trust bn example-red2.dne"
-        api_url: http://localhost:8080/api/ssi/assessment
-        id_trust_node: Trust
-        intervals_input_nodes:
-            - PPercentageSKL: [0.45, 0.8]
-            - EqualOpportunitySKL: [0.45, 0.8]
-            - AverageBoundSKLTree: [0.45, 0.8]
-            - VerifiedErrorSKLTree: [0.45, 0.8]
-            - MonotonicityLIMESKL: [0.45, 0.8]
-            - FaithfulnessLIMESKL: [0.45, 0.8]
-            - InvertedBrierSKL: [0.45, 0.8]
-            - InvertedExpectedCalibrationSKL: [0.45, 0.8]
+    

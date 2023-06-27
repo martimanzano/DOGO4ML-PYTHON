@@ -1,2 +1,0 @@
-from TrustAssessor.assessment_methods.WeightedAverage import WeightedAverage
-from TrustAssessor.assessment_methods.BayesianNetwork import BayesianNetwork

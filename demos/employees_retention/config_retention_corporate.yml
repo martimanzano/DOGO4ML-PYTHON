@@ -10,8 +10,8 @@ metrics:
     - ROCSKL:
         multiclass_average: "macro"
     - ExplanationsAccuracyTED:
-        explainer_path: "demos/employees_retention/ted_explainer"
-        explanations_path: "demos/employees_retention/ted_explanations"
+        explainer_path: "demos/employees_retention/ted_explainer" # remove "demos/" if running from notebook
+        explanations_path: "demos/employees_retention/ted_explanations" # remove "demos/" if running from notebook
 assessment_method:
     WeightedAverage: # WEIGHTS FOR COMPUTING TRUST WITH THE WEIGHTED AVERAGED METHOD
         performance-0.5:
@@ -23,7 +23,7 @@ assessment_method:
         explainability-0.5:                
             ExplanationsAccuracyTED: 1
     BayesianNetwork: # PARAMETERS FOR COMPUTING TRUST WITH A BAYESIAN NETWORK
-        bn_path: "D:/DOGO4ML-PYTHON/demos/employees_retention/trust bn example-retention.dne"
+        bn_path: "D:/DOGO4ML-PYTHON/demos/employees_retention/trust bn example-retention.dne" # remove "demos/" if running from notebook
         api_url: http://localhost:8080/api/ssi/assessment
         id_trust_node: Trust
         intervals_input_nodes:        

@@ -12,7 +12,7 @@ metrics:
         protected_attributes: [contrib_gender]
         positive_class: 1
     - FaithfulnessLIMESKL:
-        explainer_path: "demos/pull_request/lime_explainer"
+        explainer_path: "demos/pull_request/lime_explainer" # remove "demos/" if running from notebook
     - InvertedExpectedCalibrationSKL
     - InvertedBrierSKL
 assessment_method:

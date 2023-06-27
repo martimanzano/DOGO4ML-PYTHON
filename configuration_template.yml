@@ -1,15 +1,14 @@
- ### TRUSTAI CONFIGURATION TEMPLATE ###
-metrics: 
+ ### TrustML CONFIGURATION TEMPLATE ### 
 metrics:
     - AccuracySKL
     - PrecisionSKL:
-        multiclass_average: "binary"
+        multiclass_average: "binary" # binary for binary classification
     - RecallSKL:
-        multiclass_average: "binary"
+        multiclass_average: "binary" # binary for binary classification
     - F1SKL:
-        multiclass_average: "binary"
+        multiclass_average: "binary" # binary for binary classification
     - ROCSKL:
-        multiclass_average: "macro"
+        multiclass_average: "macro" # macro for binary classification
     - PPercentageSKL:
         protected_attributes: [list,of,sensible,attributes]
         positive_class: *privileged_class*

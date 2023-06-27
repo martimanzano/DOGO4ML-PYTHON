@@ -1,0 +1,2 @@
+from trustML.TrustworthinessComputation.assessment_methods.WeightedAverage import WeightedAverage
+from trustML.TrustworthinessComputation.assessment_methods.BayesianNetwork import BayesianNetwork

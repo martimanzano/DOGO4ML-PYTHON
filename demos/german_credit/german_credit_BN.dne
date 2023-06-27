@@ -1,0 +1,390 @@
+// ~->[DNET-1]->~
+
+// File created by an unlicensed user using Netica 6.04 on Jun 23, 2023 at 09:11:06 UTC.
+
+bnet trust_bn_example_red2 {
+autoupdate = TRUE;
+whenchanged = 1687511466;
+
+visual V2 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	ShowLinkStrengths = 1;
+	windowposn = (3, -16, 1326, 649);
+	resolution = 72;
+	magnification = 0.707107;
+	drawingbounds = (2065, 861);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00e1e1e1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00f8eed2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00d3caa6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00c8c8c8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00ffffb4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00ffbdbd;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00dee8ff;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00f0fafa;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00ffffff;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+
+node AccuracySKL {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	levels = (0, 0.3, 0.7);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = ();
+	probs = 
+		// Low          Medium       High         
+		  (0.3108805,   0.5126448,   0.1764746);
+	whenchanged = 1687511353;
+	belief = (0.3108805, 0.5126448, 0.1764746);
+	visual V2 {
+		center = (288, 318);
+		height = 11;
+		};
+	};
+
+node PrecisionSKL {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	levels = (0, 0.3, 0.7);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = ();
+	probs = 
+		// Low          Medium       High         
+		  (0.3108805,   0.5126448,   0.1764746);
+	whenchanged = 1687511384;
+	belief = (0.3108805, 0.5126448, 0.1764746);
+	visual V2 {
+		center = (468, 318);
+		height = 12;
+		};
+	};
+
+node RecallSKL {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	levels = (0, 0.3, 0.7);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = ();
+	probs = 
+		// Low          Medium       High         
+		  (0.3108805,   0.5126448,   0.1764746);
+	whenchanged = 1687511373;
+	belief = (0.3108805, 0.5126448, 0.1764746);
+	visual V2 {
+		center = (648, 318);
+		height = 13;
+		};
+	};
+
+node Performance {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (AccuracySKL, PrecisionSKL, RecallSKL);
+	probs = 
+		// Low          Medium       High          // AccuracySKL PrecisionSKL RecallSKL 
+		  (0.3000431,   0.3374471,   0.3625098,    // Low         Low          Low       
+		   0.3000431,   0.3374471,   0.3625098,    // Low         Low          Medium    
+		   0.3000431,   0.3374471,   0.3625098,    // Low         Low          High      
+		   0.3000431,   0.3374471,   0.3625098,    // Low         Medium       Low       
+		   0.3000431,   0.3374471,   0.3625098,    // Low         Medium       Medium    
+		   0.3000431,   0.3374471,   0.3625098,    // Low         Medium       High      
+		   0.3000431,   0.3374471,   0.3625098,    // Low         High         Low       
+		   0.3000431,   0.3374471,   0.3625098,    // Low         High         Medium    
+		   0.3000431,   0.3374471,   0.3625098,    // Low         High         High      
+		   0.1586451,   0.446378,    0.3949769,    // Medium      Low          Low       
+		   0.1586451,   0.446378,    0.3949769,    // Medium      Low          Medium    
+		   0.1586451,   0.446378,    0.3949769,    // Medium      Low          High      
+		   0.1586451,   0.446378,    0.3949769,    // Medium      Medium       Low       
+		   0.1586451,   0.446378,    0.3949769,    // Medium      Medium       Medium    
+		   0.1586451,   0.446378,    0.3949769,    // Medium      Medium       High      
+		   0.1586451,   0.446378,    0.3949769,    // Medium      High         Low       
+		   0.1586451,   0.446378,    0.3949769,    // Medium      High         Medium    
+		   0.1586451,   0.446378,    0.3949769,    // Medium      High         High      
+		   0.2539376,   0.597777,    0.1482854,    // High        Low          Low       
+		   0.2539376,   0.597777,    0.1482854,    // High        Low          Medium    
+		   0.2539376,   0.597777,    0.1482854,    // High        Low          High      
+		   0.2539376,   0.597777,    0.1482854,    // High        Medium       Low       
+		   0.2539376,   0.597777,    0.1482854,    // High        Medium       Medium    
+		   0.2539376,   0.597777,    0.1482854,    // High        Medium       High      
+		   0.2539376,   0.597777,    0.1482854,    // High        High         Low       
+		   0.2539376,   0.597777,    0.1482854,    // High        High         Medium    
+		   0.2539376,   0.597777,    0.1482854);   // High        High         High      ;
+	whenchanged = 1687511395;
+	belief = (0.2194197, 0.4392316, 0.3413487);
+	visual V2 {
+		center = (486, 192);
+		height = 2;
+		};
+	};
+
+node PPercentageSKL {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	levels = (0, 0.3, 0.7);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = ();
+	probs = 
+		// Low          Medium       High         
+		  (0.1635315,   0.3380296,   0.4984389);
+	whenchanged = 1670841429;
+	belief = (0.1635315, 0.3380296, 0.4984389);
+	visual V2 {
+		center = (714, 474);
+		height = 9;
+		};
+	};
+
+node EqualOpportunitySKL {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	levels = (0, 0.3, 0.7);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = ();
+	probs = 
+		// Low          Medium       High         
+		  (0.5739649,   0.3034894,   0.1225458);
+	whenchanged = 1670841435;
+	belief = (0.5739648, 0.3034894, 0.1225458);
+	visual V2 {
+		center = (882, 474);
+		height = 10;
+		};
+	};
+
+node Fairness {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (PPercentageSKL, EqualOpportunitySKL);
+	probs = 
+		// Low          Medium       High          // PPercentageSKL EqualOpportunitySKL 
+		  (0.4605526,   0.1539053,   0.3855421,    // Low            Low                 
+		   0.7330092,   0.05062815,  0.2163627,    // Low            Medium              
+		   0.1206992,   0.4187751,   0.4605257,    // Low            High                
+		   0.4062598,   0.5229821,   0.07075817,   // Medium         Low                 
+		   0.318475,    0.5057905,   0.1757345,    // Medium         Medium              
+		   0.7366599,   0.03736756,  0.2259725,    // Medium         High                
+		   0.2379559,   0.4369414,   0.3251027,    // High           Low                 
+		   0.2094117,   0.3226525,   0.4679358,    // High           Medium              
+		   0.5188668,   0.06062775,  0.4205054);   // High           High                ;
+	whenchanged = 1670584452;
+	belief = (0.3554819, 0.3577685, 0.2867496);
+	visual V2 {
+		center = (834, 336);
+		height = 8;
+		};
+	};
+
+node FaithfulnessLIMESKL {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	levels = (0, 0.3, 0.7);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = ();
+	probs = 
+		// Low          Medium       High         
+		  (0.3573474,   0.3351996,   0.307453);
+	whenchanged = 1670841484;
+	belief = (0.3573474, 0.3351996, 0.307453);
+	visual V2 {
+		center = (1062, 486);
+		height = 4;
+		};
+	};
+
+node Explainability {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (FaithfulnessLIMESKL);
+	probs = 
+		// Low          Medium       High          // FaithfulnessLIMESKL 
+		  (0.02789815,  0.5678259,   0.404276,     // Low                 
+		   0.4014839,   0.373223,    0.2252931,    // Medium              
+		   0.3328634,   0.5044088,   0.1627279);   // High                ;
+	whenchanged = 1687511327;
+	belief = (0.2468864, 0.4830973, 0.2700163);
+	visual V2 {
+		center = (1062, 330);
+		height = 3;
+		};
+	};
+
+node InvertedBrierSKL {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	levels = (0, 0.3, 0.7);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = ();
+	probs = 
+		// Low          Medium       High         
+		  (0.5942796,   0.1084364,   0.297284);
+	whenchanged = 1670841495;
+	belief = (0.5942796, 0.1084364, 0.297284);
+	visual V2 {
+		center = (1260, 432);
+		height = 6;
+		};
+	};
+
+node InvertedExpectedCalibrationSKL {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	levels = (0, 0.3, 0.7);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = ();
+	probs = 
+		// Low          Medium       High         
+		  (0.3574552,   0.2219865,   0.4205583);
+	whenchanged = 1670841502;
+	belief = (0.3574552, 0.2219865, 0.4205583);
+	visual V2 {
+		center = (1458, 432);
+		height = 7;
+		};
+	};
+
+node Uncertainty {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (InvertedBrierSKL, InvertedExpectedCalibrationSKL);
+	probs = 
+		// Low          Medium       High          // InvertedBrierSKL InvertedExpectedCalibrationSKL 
+		  (0.41511,     0.08450014,  0.5003899,    // Low              Low                            
+		   0.05059402,  0.4830589,   0.4663471,    // Low              Medium                         
+		   0.4789437,   0.2550387,   0.2660176,    // Low              High                           
+		   0.5294845,   0.3770211,   0.09349437,   // Medium           Low                            
+		   0.1690537,   0.4426729,   0.3882733,    // Medium           Medium                         
+		   0.5458232,   0.1047359,   0.3494409,    // Medium           High                           
+		   0.1812041,   0.4250748,   0.393721,     // High             Low                            
+		   0.4853394,   0.1753417,   0.3393189,    // High             Medium                         
+		   0.6260807,   0.04272851,  0.3311908);   // High             High                           ;
+	whenchanged = 1670584452;
+	belief = (0.3936027, 0.2375482, 0.3688491);
+	visual V2 {
+		center = (1332, 336);
+		height = 5;
+		};
+	};
+
+node Trust {
+	discrete = TRUE;
+	states = (Low, Medium, High);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (Performance, Fairness, Explainability, Uncertainty);
+	probs = 
+		// Low          Medium       High          // Performance Fairness Explainability Uncertainty 
+		  (0.4275205,   0.5576271,   0.01485237,   // Low         Low      Low            Low         
+		   0.2523266,   0.3566546,   0.3910188,    // Low         Low      Low            Medium      
+		   0.4137257,   0.4175048,   0.1687695,    // Low         Low      Low            High        
+		   0.2199703,   0.0203176,   0.7597122,    // Low         Low      Medium         Low         
+		   0.1057827,   0.225937,    0.6682804,    // Low         Low      Medium         Medium      
+		   0.06462759,  0.4710593,   0.4643132,    // Low         Low      Medium         High        
+		   0.3532031,   0.3735986,   0.2731983,    // Low         Low      High           Low         
+		   0.2227042,   0.4052816,   0.3720141,    // Low         Low      High           Medium      
+		   0.2322325,   0.5256806,   0.2420868,    // Low         Low      High           High        
+		   0.3680336,   0.3206636,   0.3113028,    // Low         Medium   Low            Low         
+		   0.3436429,   0.2931526,   0.3632045,    // Low         Medium   Low            Medium      
+		   0.1524334,   0.6180689,   0.2294978,    // Low         Medium   Low            High        
+		   0.3345605,   0.2725689,   0.3928706,    // Low         Medium   Medium         Low         
+		   0.1875717,   0.3654567,   0.4469716,    // Low         Medium   Medium         Medium      
+		   0.1180417,   0.4579518,   0.4240065,    // Low         Medium   Medium         High        
+		   0.1770214,   0.4808621,   0.3421165,    // Low         Medium   High           Low         
+		   0.01629699,  0.5729784,   0.4107246,    // Low         Medium   High           Medium      
+		   0.3375931,   0.3074847,   0.3549222,    // Low         Medium   High           High        
+		   0.5498879,   0.291207,    0.1589051,    // Low         High     Low            Low         
+		   0.191452,    0.3405787,   0.4679693,    // Low         High     Low            Medium      
+		   0.2324356,   0.1786636,   0.5889009,    // Low         High     Low            High        
+		   0.2502264,   0.423391,    0.3263826,    // Low         High     Medium         Low         
+		   0.2347586,   0.5651091,   0.2001323,    // Low         High     Medium         Medium      
+		   0.3605728,   0.4091919,   0.2302353,    // Low         High     Medium         High        
+		   0.7363582,   0.1704048,   0.09323696,   // Low         High     High           Low         
+		   0.392622,    0.4279149,   0.1794631,    // Low         High     High           Medium      
+		   0.1440075,   0.4453443,   0.4106482,    // Low         High     High           High        
+		   0.3275253,   0.41684,     0.2556346,    // Medium      Low      Low            Low         
+		   0.0705784,   0.4656095,   0.4638121,    // Medium      Low      Low            Medium      
+		   0.3326108,   0.04889077,  0.6184983,    // Medium      Low      Low            High        
+		   0.33745,     0.5758851,   0.08666492,   // Medium      Low      Medium         Low         
+		   0.3168474,   0.355404,    0.3277487,    // Medium      Low      Medium         Medium      
+		   0.337366,    0.08488704,  0.577747,     // Medium      Low      Medium         High        
+		   0.3498699,   0.3371656,   0.3129646,    // Medium      Low      High           Low         
+		   0.152144,    0.4342226,   0.4136334,    // Medium      Low      High           Medium      
+		   0.5485256,   0.2620105,   0.1894639,    // Medium      Low      High           High        
+		   0.2379459,   0.3798764,   0.3821777,    // Medium      Medium   Low            Low         
+		   0.151921,    0.3876363,   0.4604428,    // Medium      Medium   Low            Medium      
+		   0.4188878,   0.2081726,   0.3729396,    // Medium      Medium   Low            High        
+		   0.1621237,   0.1547164,   0.6831598,    // Medium      Medium   Medium         Low         
+		   0.02877235,  0.7945945,   0.1766332,    // Medium      Medium   Medium         Medium      
+		   0.3621438,   0.5335091,   0.1043471,    // Medium      Medium   Medium         High        
+		   0.3375239,   0.1911335,   0.4713426,    // Medium      Medium   High           Low         
+		   0.2593262,   0.392227,    0.3484469,    // Medium      Medium   High           Medium      
+		   0.4993114,   0.05500352,  0.4456851,    // Medium      Medium   High           High        
+		   0.05003704,  0.4403341,   0.5096288,    // Medium      High     Low            Low         
+		   0.1928438,   0.4563277,   0.3508285,    // Medium      High     Low            Medium      
+		   0.405015,    0.2137157,   0.3812692,    // Medium      High     Low            High        
+		   0.5454716,   0.3529218,   0.1016066,    // Medium      High     Medium         Low         
+		   0.269424,    0.4552333,   0.2753428,    // Medium      High     Medium         Medium      
+		   0.5185889,   0.4606536,   0.02075747,   // Medium      High     Medium         High        
+		   0.156251,    0.5526822,   0.2910668,    // Medium      High     High           Low         
+		   0.09475756,  0.3249787,   0.5802637,    // Medium      High     High           Medium      
+		   0.4712507,   0.4678465,   0.06090275,   // Medium      High     High           High        
+		   0.1842369,   0.3013216,   0.5144415,    // High        Low      Low            Low         
+		   0.4304315,   0.5120403,   0.05752818,   // High        Low      Low            Medium      
+		   0.1602539,   0.5044978,   0.3352483,    // High        Low      Low            High        
+		   0.09669977,  0.4803228,   0.4229774,    // High        Low      Medium         Low         
+		   0.2993352,   0.441952,    0.2587127,    // High        Low      Medium         Medium      
+		   0.2388522,   0.2006143,   0.5605335,    // High        Low      Medium         High        
+		   0.7232311,   0.03667508,  0.2400938,    // High        Low      High           Low         
+		   0.1150291,   0.1014419,   0.783529,     // High        Low      High           Medium      
+		   0.3459081,   0.2497274,   0.4043645,    // High        Low      High           High        
+		   0.154036,    0.2580728,   0.5878911,    // High        Medium   Low            Low         
+		   0.01326416,  0.3893884,   0.5973474,    // High        Medium   Low            Medium      
+		   0.06164398,  0.5679033,   0.3704527,    // High        Medium   Low            High        
+		   0.2026189,   0.6578236,   0.1395575,    // High        Medium   Medium         Low         
+		   0.1701254,   0.4816356,   0.348239,     // High        Medium   Medium         Medium      
+		   0.06764506,  0.4364262,   0.4959288,    // High        Medium   Medium         High        
+		   0.2181788,   0.03673147,  0.7450898,    // High        Medium   High           Low         
+		   0.1972346,   0.1546887,   0.6480768,    // High        Medium   High           Medium      
+		   0.1051784,   0.44162,     0.4532016,    // High        Medium   High           High        
+		   0.3409958,   0.3844972,   0.2745071,    // High        High     Low            Low         
+		   0.5523087,   0.4153287,   0.03236259,   // High        High     Low            Medium      
+		   0.8195555,   0.1416158,   0.03882877,   // High        High     Low            High        
+		   0.153153,    0.4097834,   0.4370636,    // High        High     Medium         Low         
+		   0.4195154,   0.3714649,   0.2090198,    // High        High     Medium         Medium      
+		   0.6645866,   0.2034256,   0.1319877,    // High        High     Medium         High        
+		   0.4506934,   0.004957499, 0.5443491,    // High        High     High           Low         
+		   0.1735739,   0.7430509,   0.08337514,   // High        High     High           Medium      
+		   0.433845,    0.3069254,   0.2592295);   // High        High     High           High        ;
+	whenchanged = 1687511308;
+	belief = (0.2884534, 0.3592264, 0.3523202);
+	visual V2 {
+		center = (876, 138);
+		height = 1;
+		};
+	};
+};
