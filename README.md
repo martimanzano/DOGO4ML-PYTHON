@@ -1,4 +1,4 @@
-<p align="center"><img src="https://user-images.githubusercontent.com/7520973/216668027-e968c4a8-a7e4-486a-8347-c4d2ae637ab1.png"></p>
+<p align="center"><img src="https://github-production-user-asset-6210df.s3.amazonaws.com/7520973/249193988-89f07b66-f8b9-4df7-97ba-500f0cbebaab.png"></p>
 
 _TrustML_ is a modular and extensible package to support the definition, assessment and monitoring of custom-built trustworthiness indicators for AI models. _TrustML_ allows data scientists to define trustworthiness indicators by selecting a set of metrics from a catalog of trustworthy-related metrics and grouping them into higher-level metric aggregations.
 
