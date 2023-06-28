@@ -103,3 +103,6 @@ trust/assessment_methods/__pycache__/Trust_WA.cpython-38.pyc
 oldsetup.cfg
 oldsetup.py
 .gitignore
+__pycache__
+dist
+.pypirc

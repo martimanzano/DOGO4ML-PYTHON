@@ -1,4 +1,4 @@
- ### TrustML CONFIGURATION TEMPLATE ### 
+### TrustML CONFIGURATION TEMPLATE ### 
 metrics:
     - AccuracySKL
     - PrecisionSKL:
