@@ -50,4 +50,4 @@ df_downsampled.merged_or_not.value_counts()
 
 dataset = df_downsampled
 
-dataset.to_csv("D:/new_pullreq-red.csv", sep=',', index=False)  # 19 MB FILE
+dataset.to_csv("new_pullreq-red.csv", sep=',', index=False)  # 19 MB FILE

@@ -1,10 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by an unlicensed user using Netica 6.04 on Jun 23, 2023 at 09:11:06 UTC.
+// File created by an unlicensed user using Netica 6.04 on Jul 11, 2023 at 15:52:49 UTC.
 
 bnet trust_bn_example_red2 {
+AutoCompile = TRUE;
 autoupdate = TRUE;
-whenchanged = 1687511466;
+whenchanged = 1689090760;
 
 visual V2 {
 	defdispform = BELIEFBARS;
@@ -13,10 +14,11 @@ visual V2 {
 	nodefont = font {shape= "Arial"; size= 9;};
 	linkfont = font {shape= "Arial"; size= 9;};
 	ShowLinkStrengths = 1;
-	windowposn = (3, -16, 1326, 649);
+	windowposn = (26, 26, 1076, 511);
+	scrollposn = (160, 0);
 	resolution = 72;
 	magnification = 0.707107;
-	drawingbounds = (2065, 861);
+	drawingbounds = (2065, 931);
 	showpagebreaks = FALSE;
 	usegrid = TRUE;
 	gridspace = (6, 6);
@@ -45,7 +47,7 @@ node AccuracySKL {
 	probs = 
 		// Low          Medium       High         
 		  (0.3108805,   0.5126448,   0.1764746);
-	whenchanged = 1687511353;
+	whenchanged = 1689090760;
 	belief = (0.3108805, 0.5126448, 0.1764746);
 	visual V2 {
 		center = (288, 318);
@@ -63,7 +65,7 @@ node PrecisionSKL {
 	probs = 
 		// Low          Medium       High         
 		  (0.3108805,   0.5126448,   0.1764746);
-	whenchanged = 1687511384;
+	whenchanged = 1689090760;
 	belief = (0.3108805, 0.5126448, 0.1764746);
 	visual V2 {
 		center = (468, 318);
@@ -81,8 +83,8 @@ node RecallSKL {
 	probs = 
 		// Low          Medium       High         
 		  (0.3108805,   0.5126448,   0.1764746);
-	whenchanged = 1687511373;
-	belief = (0.3108805, 0.5126448, 0.1764746);
+	whenchanged = 1689090760;
+	belief = (0.3108805, 0.5126449, 0.1764746);
 	visual V2 {
 		center = (648, 318);
 		height = 13;
@@ -92,40 +94,41 @@ node RecallSKL {
 node Performance {
 	discrete = TRUE;
 	states = (Low, Medium, High);
+	levels = (0, 0, 0);
 	kind = NATURE;
 	chance = CHANCE;
 	parents = (AccuracySKL, PrecisionSKL, RecallSKL);
 	probs = 
 		// Low          Medium       High          // AccuracySKL PrecisionSKL RecallSKL 
-		  (0.3000431,   0.3374471,   0.3625098,    // Low         Low          Low       
-		   0.3000431,   0.3374471,   0.3625098,    // Low         Low          Medium    
-		   0.3000431,   0.3374471,   0.3625098,    // Low         Low          High      
-		   0.3000431,   0.3374471,   0.3625098,    // Low         Medium       Low       
-		   0.3000431,   0.3374471,   0.3625098,    // Low         Medium       Medium    
-		   0.3000431,   0.3374471,   0.3625098,    // Low         Medium       High      
-		   0.3000431,   0.3374471,   0.3625098,    // Low         High         Low       
-		   0.3000431,   0.3374471,   0.3625098,    // Low         High         Medium    
-		   0.3000431,   0.3374471,   0.3625098,    // Low         High         High      
-		   0.1586451,   0.446378,    0.3949769,    // Medium      Low          Low       
-		   0.1586451,   0.446378,    0.3949769,    // Medium      Low          Medium    
-		   0.1586451,   0.446378,    0.3949769,    // Medium      Low          High      
-		   0.1586451,   0.446378,    0.3949769,    // Medium      Medium       Low       
-		   0.1586451,   0.446378,    0.3949769,    // Medium      Medium       Medium    
-		   0.1586451,   0.446378,    0.3949769,    // Medium      Medium       High      
-		   0.1586451,   0.446378,    0.3949769,    // Medium      High         Low       
-		   0.1586451,   0.446378,    0.3949769,    // Medium      High         Medium    
-		   0.1586451,   0.446378,    0.3949769,    // Medium      High         High      
-		   0.2539376,   0.597777,    0.1482854,    // High        Low          Low       
-		   0.2539376,   0.597777,    0.1482854,    // High        Low          Medium    
-		   0.2539376,   0.597777,    0.1482854,    // High        Low          High      
-		   0.2539376,   0.597777,    0.1482854,    // High        Medium       Low       
-		   0.2539376,   0.597777,    0.1482854,    // High        Medium       Medium    
-		   0.2539376,   0.597777,    0.1482854,    // High        Medium       High      
-		   0.2539376,   0.597777,    0.1482854,    // High        High         Low       
-		   0.2539376,   0.597777,    0.1482854,    // High        High         Medium    
-		   0.2539376,   0.597777,    0.1482854);   // High        High         High      ;
-	whenchanged = 1687511395;
-	belief = (0.2194197, 0.4392316, 0.3413487);
+		  (1,           0,           0,            // Low         Low          Low       
+		   0.27,        0.585,       0.145,        // Low         Low          Medium    
+		   0.303,       0.327,       0.37,         // Low         Low          High      
+		   0.66,        0.3,         0.04,         // Low         Medium       Low       
+		   0.215,       0.67,        0.115,        // Low         Medium       Medium    
+		   0.248,       0.412,       0.34,         // Low         Medium       High      
+		   0.9,         0.1,         0,            // Low         High         Low       
+		   0.2411667,   0.6163334,   0.1425,       // Low         High         Medium    
+		   0.1,         0.5,         0.4,          // Low         High         High      
+		   0.53,        0.425,       0.045,        // Medium      Low          Low       
+		   0.085,       0.795,       0.12,         // Medium      Low          Medium    
+		   0.118,       0.537,       0.345,        // Medium      Low          High      
+		   0.475,       0.51,        0.015,        // Medium      Medium       Low       
+		   0,           1,           0,            // Medium      Medium       Medium    
+		   0.063,       0.622,       0.315,        // Medium      Medium       High      
+		   0.5011667,   0.4563334,   0.0425,       // Medium      High         Low       
+		   0.05616667,  0.8263334,   0.1175,       // Medium      High         Medium    
+		   0.1,         0.8,         0.1,          // Medium      High         High      
+		   0.55775,     0.281,       0.16125,      // High        Low          Low       
+		   0.11275,     0.651,       0.23625,      // High        Low          Medium    
+		   0.1,         0.3,         0.6,          // High        Low          High      
+		   0.50275,     0.366,       0.13125,      // High        Medium       Low       
+		   0.05775,     0.736,       0.20625,      // High        Medium       Medium    
+		   0.09075,     0.478,       0.43125,      // High        Medium       High      
+		   0.4,         0.6,         0,            // High        High         Low       
+		   0.05,        0.7,         0.25,         // High        High         Medium    
+		   0.02,        0.08,        0.9);         // High        High         High      ;
+	whenchanged = 0;
+	belief = (0.2621815, 0.6054069, 0.1324116);
 	visual V2 {
 		center = (486, 192);
 		height = 2;
@@ -134,16 +137,16 @@ node Performance {
 
 node PPercentageSKL {
 	discrete = TRUE;
-	states = (Low, Medium, High);
-	levels = (0, 0.3, 0.7);
+	states = (Bad, Good);
+	levels = (1, 2);
 	kind = NATURE;
 	chance = CHANCE;
 	parents = ();
 	probs = 
-		// Low          Medium       High         
-		  (0.1635315,   0.3380296,   0.4984389);
-	whenchanged = 1670841429;
-	belief = (0.1635315, 0.3380296, 0.4984389);
+		// Bad          Good         
+		  (0.1423281,   0.8576719);
+	whenchanged = 1688645248;
+	belief = (0.1423281, 0.8576719);
 	visual V2 {
 		center = (714, 474);
 		height = 9;
@@ -152,16 +155,16 @@ node PPercentageSKL {
 
 node EqualOpportunitySKL {
 	discrete = TRUE;
-	states = (Low, Medium, High);
-	levels = (0, 0.3, 0.7);
+	states = (Bad, Good);
+	levels = (0, 0.7);
 	kind = NATURE;
 	chance = CHANCE;
 	parents = ();
 	probs = 
-		// Low          Medium       High         
-		  (0.5739649,   0.3034894,   0.1225458);
-	whenchanged = 1670841435;
-	belief = (0.5739648, 0.3034894, 0.1225458);
+		// Bad          Good         
+		  (0.8240575,   0.1759425);
+	whenchanged = 1689088865;
+	belief = (0.8240575, 0.1759425);
 	visual V2 {
 		center = (882, 474);
 		height = 10;
@@ -170,26 +173,27 @@ node EqualOpportunitySKL {
 
 node Fairness {
 	discrete = TRUE;
-	states = (Low, Medium, High);
+	states = (Bad, Good);
 	kind = NATURE;
-	chance = CHANCE;
+	chance = DETERMIN;
 	parents = (PPercentageSKL, EqualOpportunitySKL);
-	probs = 
-		// Low          Medium       High          // PPercentageSKL EqualOpportunitySKL 
-		  (0.4605526,   0.1539053,   0.3855421,    // Low            Low                 
-		   0.7330092,   0.05062815,  0.2163627,    // Low            Medium              
-		   0.1206992,   0.4187751,   0.4605257,    // Low            High                
-		   0.4062598,   0.5229821,   0.07075817,   // Medium         Low                 
-		   0.318475,    0.5057905,   0.1757345,    // Medium         Medium              
-		   0.7366599,   0.03736756,  0.2259725,    // Medium         High                
-		   0.2379559,   0.4369414,   0.3251027,    // High           Low                 
-		   0.2094117,   0.3226525,   0.4679358,    // High           Medium              
-		   0.5188668,   0.06062775,  0.4205054);   // High           High                ;
-	whenchanged = 1670584452;
-	belief = (0.3554819, 0.3577685, 0.2867496);
+	functable = 
+		                    // PPercentageSKL EqualOpportunitySKL 
+		  (Bad,             // Bad            Bad                 
+		   Bad,             // Bad            Good                
+		   Bad,             // Good           Bad                 
+		   Good);           // Good           Good                ;
+	whenchanged = 1689090760;
+	belief = (0.8490991, 0.1509009);
 	visual V2 {
 		center = (834, 336);
 		height = 8;
+		link 1 {
+			path = ((749, 434), (813, 361));
+			};
+		link 2 {
+			path = ((870, 440), (842, 361));
+			};
 		};
 	};
 
@@ -219,11 +223,12 @@ node Explainability {
 	parents = (FaithfulnessLIMESKL);
 	probs = 
 		// Low          Medium       High          // FaithfulnessLIMESKL 
-		  (0.02789815,  0.5678259,   0.404276,     // Low                 
-		   0.4014839,   0.373223,    0.2252931,    // Medium              
-		   0.3328634,   0.5044088,   0.1627279);   // High                ;
-	whenchanged = 1687511327;
-	belief = (0.2468864, 0.4830973, 0.2700163);
+		  (0.9,         0.1,         0,            // Low                 
+		   0.05,        0.9,         0.05,         // Medium              
+		   0.05,        0.05,        0.9);         // High                ;
+	numcases = 1;
+	whenchanged = 1689088955;
+	belief = (0.3537453, 0.352787, 0.2934677);
 	visual V2 {
 		center = (1062, 330);
 		height = 3;
@@ -258,7 +263,7 @@ node InvertedExpectedCalibrationSKL {
 	probs = 
 		// Low          Medium       High         
 		  (0.3574552,   0.2219865,   0.4205583);
-	whenchanged = 1670841502;
+	whenchanged = 1689089859;
 	belief = (0.3574552, 0.2219865, 0.4205583);
 	visual V2 {
 		center = (1458, 432);
@@ -274,17 +279,28 @@ node Uncertainty {
 	parents = (InvertedBrierSKL, InvertedExpectedCalibrationSKL);
 	probs = 
 		// Low          Medium       High          // InvertedBrierSKL InvertedExpectedCalibrationSKL 
-		  (0.41511,     0.08450014,  0.5003899,    // Low              Low                            
-		   0.05059402,  0.4830589,   0.4663471,    // Low              Medium                         
-		   0.4789437,   0.2550387,   0.2660176,    // Low              High                           
-		   0.5294845,   0.3770211,   0.09349437,   // Medium           Low                            
-		   0.1690537,   0.4426729,   0.3882733,    // Medium           Medium                         
-		   0.5458232,   0.1047359,   0.3494409,    // Medium           High                           
-		   0.1812041,   0.4250748,   0.393721,     // High             Low                            
-		   0.4853394,   0.1753417,   0.3393189,    // High             Medium                         
-		   0.6260807,   0.04272851,  0.3311908);   // High             High                           ;
-	whenchanged = 1670584452;
-	belief = (0.3936027, 0.2375482, 0.3688491);
+		  (1,           0,           0,            // Low              Low                            
+		   0.6,         0.4,         0,            // Low              Medium                         
+		   0.4,         0.5,         0.1,          // Low              High                           
+		   0.6,         0.4,         0,            // Medium           Low                            
+		   0,           1,           0,            // Medium           Medium                         
+		   0,           0.7,         0.3,          // Medium           High                           
+		   0.4,         0.5,         0.1,          // High             Low                            
+		   0.1,         0.4,         0.5,          // High             Medium                         
+		   0.05,        0.05,        0.9);         // High             High                           ;
+	numcases = 
+		                 // InvertedBrierSKL InvertedExpectedCalibrationSKL 
+		  (1,            // Low              Low                            
+		   -1,           // Low              Medium                         
+		   -1,           // Low              High                           
+		   -1,           // Medium           Low                            
+		   -1,           // Medium           Medium                         
+		   -1,           // Medium           High                           
+		   -1,           // High             Low                            
+		   -1,           // High             Medium                         
+		   -1);          // High             High                           ;
+	whenchanged = 1689089853;
+	belief = (0.4701668, 0.3350133, 0.1948199);
 	visual V2 {
 		center = (1332, 336);
 		height = 5;
@@ -299,92 +315,122 @@ node Trust {
 	parents = (Performance, Fairness, Explainability, Uncertainty);
 	probs = 
 		// Low          Medium       High          // Performance Fairness Explainability Uncertainty 
-		  (0.4275205,   0.5576271,   0.01485237,   // Low         Low      Low            Low         
-		   0.2523266,   0.3566546,   0.3910188,    // Low         Low      Low            Medium      
-		   0.4137257,   0.4175048,   0.1687695,    // Low         Low      Low            High        
-		   0.2199703,   0.0203176,   0.7597122,    // Low         Low      Medium         Low         
-		   0.1057827,   0.225937,    0.6682804,    // Low         Low      Medium         Medium      
-		   0.06462759,  0.4710593,   0.4643132,    // Low         Low      Medium         High        
-		   0.3532031,   0.3735986,   0.2731983,    // Low         Low      High           Low         
-		   0.2227042,   0.4052816,   0.3720141,    // Low         Low      High           Medium      
-		   0.2322325,   0.5256806,   0.2420868,    // Low         Low      High           High        
-		   0.3680336,   0.3206636,   0.3113028,    // Low         Medium   Low            Low         
-		   0.3436429,   0.2931526,   0.3632045,    // Low         Medium   Low            Medium      
-		   0.1524334,   0.6180689,   0.2294978,    // Low         Medium   Low            High        
-		   0.3345605,   0.2725689,   0.3928706,    // Low         Medium   Medium         Low         
-		   0.1875717,   0.3654567,   0.4469716,    // Low         Medium   Medium         Medium      
-		   0.1180417,   0.4579518,   0.4240065,    // Low         Medium   Medium         High        
-		   0.1770214,   0.4808621,   0.3421165,    // Low         Medium   High           Low         
-		   0.01629699,  0.5729784,   0.4107246,    // Low         Medium   High           Medium      
-		   0.3375931,   0.3074847,   0.3549222,    // Low         Medium   High           High        
-		   0.5498879,   0.291207,    0.1589051,    // Low         High     Low            Low         
-		   0.191452,    0.3405787,   0.4679693,    // Low         High     Low            Medium      
-		   0.2324356,   0.1786636,   0.5889009,    // Low         High     Low            High        
-		   0.2502264,   0.423391,    0.3263826,    // Low         High     Medium         Low         
-		   0.2347586,   0.5651091,   0.2001323,    // Low         High     Medium         Medium      
-		   0.3605728,   0.4091919,   0.2302353,    // Low         High     Medium         High        
-		   0.7363582,   0.1704048,   0.09323696,   // Low         High     High           Low         
-		   0.392622,    0.4279149,   0.1794631,    // Low         High     High           Medium      
-		   0.1440075,   0.4453443,   0.4106482,    // Low         High     High           High        
-		   0.3275253,   0.41684,     0.2556346,    // Medium      Low      Low            Low         
-		   0.0705784,   0.4656095,   0.4638121,    // Medium      Low      Low            Medium      
-		   0.3326108,   0.04889077,  0.6184983,    // Medium      Low      Low            High        
-		   0.33745,     0.5758851,   0.08666492,   // Medium      Low      Medium         Low         
-		   0.3168474,   0.355404,    0.3277487,    // Medium      Low      Medium         Medium      
-		   0.337366,    0.08488704,  0.577747,     // Medium      Low      Medium         High        
-		   0.3498699,   0.3371656,   0.3129646,    // Medium      Low      High           Low         
-		   0.152144,    0.4342226,   0.4136334,    // Medium      Low      High           Medium      
-		   0.5485256,   0.2620105,   0.1894639,    // Medium      Low      High           High        
-		   0.2379459,   0.3798764,   0.3821777,    // Medium      Medium   Low            Low         
-		   0.151921,    0.3876363,   0.4604428,    // Medium      Medium   Low            Medium      
-		   0.4188878,   0.2081726,   0.3729396,    // Medium      Medium   Low            High        
-		   0.1621237,   0.1547164,   0.6831598,    // Medium      Medium   Medium         Low         
-		   0.02877235,  0.7945945,   0.1766332,    // Medium      Medium   Medium         Medium      
-		   0.3621438,   0.5335091,   0.1043471,    // Medium      Medium   Medium         High        
-		   0.3375239,   0.1911335,   0.4713426,    // Medium      Medium   High           Low         
-		   0.2593262,   0.392227,    0.3484469,    // Medium      Medium   High           Medium      
-		   0.4993114,   0.05500352,  0.4456851,    // Medium      Medium   High           High        
-		   0.05003704,  0.4403341,   0.5096288,    // Medium      High     Low            Low         
-		   0.1928438,   0.4563277,   0.3508285,    // Medium      High     Low            Medium      
-		   0.405015,    0.2137157,   0.3812692,    // Medium      High     Low            High        
-		   0.5454716,   0.3529218,   0.1016066,    // Medium      High     Medium         Low         
-		   0.269424,    0.4552333,   0.2753428,    // Medium      High     Medium         Medium      
-		   0.5185889,   0.4606536,   0.02075747,   // Medium      High     Medium         High        
-		   0.156251,    0.5526822,   0.2910668,    // Medium      High     High           Low         
-		   0.09475756,  0.3249787,   0.5802637,    // Medium      High     High           Medium      
-		   0.4712507,   0.4678465,   0.06090275,   // Medium      High     High           High        
-		   0.1842369,   0.3013216,   0.5144415,    // High        Low      Low            Low         
-		   0.4304315,   0.5120403,   0.05752818,   // High        Low      Low            Medium      
-		   0.1602539,   0.5044978,   0.3352483,    // High        Low      Low            High        
-		   0.09669977,  0.4803228,   0.4229774,    // High        Low      Medium         Low         
-		   0.2993352,   0.441952,    0.2587127,    // High        Low      Medium         Medium      
-		   0.2388522,   0.2006143,   0.5605335,    // High        Low      Medium         High        
-		   0.7232311,   0.03667508,  0.2400938,    // High        Low      High           Low         
-		   0.1150291,   0.1014419,   0.783529,     // High        Low      High           Medium      
-		   0.3459081,   0.2497274,   0.4043645,    // High        Low      High           High        
-		   0.154036,    0.2580728,   0.5878911,    // High        Medium   Low            Low         
-		   0.01326416,  0.3893884,   0.5973474,    // High        Medium   Low            Medium      
-		   0.06164398,  0.5679033,   0.3704527,    // High        Medium   Low            High        
-		   0.2026189,   0.6578236,   0.1395575,    // High        Medium   Medium         Low         
-		   0.1701254,   0.4816356,   0.348239,     // High        Medium   Medium         Medium      
-		   0.06764506,  0.4364262,   0.4959288,    // High        Medium   Medium         High        
-		   0.2181788,   0.03673147,  0.7450898,    // High        Medium   High           Low         
-		   0.1972346,   0.1546887,   0.6480768,    // High        Medium   High           Medium      
-		   0.1051784,   0.44162,     0.4532016,    // High        Medium   High           High        
-		   0.3409958,   0.3844972,   0.2745071,    // High        High     Low            Low         
-		   0.5523087,   0.4153287,   0.03236259,   // High        High     Low            Medium      
-		   0.8195555,   0.1416158,   0.03882877,   // High        High     Low            High        
-		   0.153153,    0.4097834,   0.4370636,    // High        High     Medium         Low         
-		   0.4195154,   0.3714649,   0.2090198,    // High        High     Medium         Medium      
-		   0.6645866,   0.2034256,   0.1319877,    // High        High     Medium         High        
-		   0.4506934,   0.004957499, 0.5443491,    // High        High     High           Low         
-		   0.1735739,   0.7430509,   0.08337514,   // High        High     High           Medium      
-		   0.433845,    0.3069254,   0.2592295);   // High        High     High           High        ;
-	whenchanged = 1687511308;
-	belief = (0.2884534, 0.3592264, 0.3523202);
+		  (1,           0,           0,            // Low         Bad      Low            Low         
+		   1,           0,           0,            // Low         Bad      Low            Medium      
+		   1,           0,           0,            // Low         Bad      Low            High        
+		   1,           0,           0,            // Low         Bad      Medium         Low         
+		   1,           0,           0,            // Low         Bad      Medium         Medium      
+		   1,           0,           0,            // Low         Bad      Medium         High        
+		   1,           0,           0,            // Low         Bad      High           Low         
+		   1,           0,           0,            // Low         Bad      High           Medium      
+		   1,           0,           0,            // Low         Bad      High           High        
+		   1,           0,           0,            // Low         Good     Low            Low         
+		   1,           0,           0,            // Low         Good     Low            Medium      
+		   1,           0,           0,            // Low         Good     Low            High        
+		   1,           0,           0,            // Low         Good     Medium         Low         
+		   1,           0,           0,            // Low         Good     Medium         Medium      
+		   1,           0,           0,            // Low         Good     Medium         High        
+		   1,           0,           0,            // Low         Good     High           Low         
+		   1,           0,           0,            // Low         Good     High           Medium      
+		   1,           0,           0,            // Low         Good     High           High        
+		   0.5692858,   0.3921428,   0.03857143,   // Medium      Bad      Low            Low         
+		   0.535,       0.40125,     0.06375,      // Medium      Bad      Low            Medium      
+		   0.536875,    0.39,        0.073125,     // Medium      Bad      Low            High        
+		   0.5205358,   0.4371428,   0.04232142,   // Medium      Bad      Medium         Low         
+		   0.48625,     0.44625,     0.0675,       // Medium      Bad      Medium         Medium      
+		   0.488125,    0.435,       0.076875,     // Medium      Bad      Medium         High        
+		   0.5037302,   0.4110317,   0.0852381,    // Medium      Bad      High           Low         
+		   0.4694445,   0.4201388,   0.1104167,    // Medium      Bad      High           Medium      
+		   0.4713194,   0.4088889,   0.1197917,    // Medium      Bad      High           High        
+		   0.5342858,   0.4110714,   0.05464286,   // Medium      Good     Low            Low         
+		   0.5,         0.4201785,   0.07982145,   // Medium      Good     Low            Medium      
+		   0.501875,    0.4089285,   0.08919644,   // Medium      Good     Low            High        
+		   0.4855357,   0.4560714,   0.05839286,   // Medium      Good     Medium         Low         
+		   0,           1,           0,            // Medium      Good     Medium         Medium      
+		   0.05,        0.8,         0.15,         // Medium      Good     Medium         High        
+		   0.4687302,   0.4299603,   0.1013095,    // Medium      Good     High           Low         
+		   0.4344445,   0.4390674,   0.1264881,    // Medium      Good     High           Medium      
+		   0.4363195,   0.4278174,   0.1358631,    // Medium      Good     High           High        
+		   0.5659524,   0.1454762,   0.2885714,    // High        Bad      Low            Low         
+		   0.5316667,   0.1545833,   0.31375,      // High        Bad      Low            Medium      
+		   0.5335417,   0.1433333,   0.323125,     // High        Bad      Low            High        
+		   0.5172024,   0.1904762,   0.2923214,    // High        Bad      Medium         Low         
+		   0.4829167,   0.1995833,   0.3175,       // High        Bad      Medium         Medium      
+		   0.4847917,   0.1883333,   0.326875,     // High        Bad      Medium         High        
+		   0.5003968,   0.1643651,   0.3352381,    // High        Bad      High           Low         
+		   0.4661111,   0.1734722,   0.3604167,    // High        Bad      High           Medium      
+		   0.4679862,   0.1622222,   0.3697917,    // High        Bad      High           High        
+		   0.5309524,   0.1644048,   0.3046428,    // High        Good     Low            Low         
+		   0.4966667,   0.1735119,   0.3298214,    // High        Good     Low            Medium      
+		   0.4985417,   0.1622619,   0.3391964,    // High        Good     Low            High        
+		   0.4822024,   0.2094048,   0.3083929,    // High        Good     Medium         Low         
+		   0.4479167,   0.2185119,   0.3335714,    // High        Good     Medium         Medium      
+		   0.4497917,   0.2072619,   0.3429464,    // High        Good     Medium         High        
+		   0.05,        0.75,        0.2,          // High        Good     High           Low         
+		   0,           0.1,         0.9,          // High        Good     High           Medium      
+		   0,           0,           1);           // High        Good     High           High        ;
+	numcases = 
+		                 // Performance Fairness Explainability Uncertainty 
+		  (1,            // Low         Bad      Low            Low         
+		   1,            // Low         Bad      Low            Medium      
+		   1,            // Low         Bad      Low            High        
+		   1,            // Low         Bad      Medium         Low         
+		   1,            // Low         Bad      Medium         Medium      
+		   1,            // Low         Bad      Medium         High        
+		   1,            // Low         Bad      High           Low         
+		   1,            // Low         Bad      High           Medium      
+		   1,            // Low         Bad      High           High        
+		   1,            // Low         Good     Low            Low         
+		   1,            // Low         Good     Low            Medium      
+		   1,            // Low         Good     Low            High        
+		   1,            // Low         Good     Medium         Low         
+		   1,            // Low         Good     Medium         Medium      
+		   1,            // Low         Good     Medium         High        
+		   1,            // Low         Good     High           Low         
+		   1,            // Low         Good     High           Medium      
+		   1,            // Low         Good     High           High        
+		   0,            // Medium      Bad      Low            Low         
+		   0,            // Medium      Bad      Low            Medium      
+		   0,            // Medium      Bad      Low            High        
+		   0,            // Medium      Bad      Medium         Low         
+		   0,            // Medium      Bad      Medium         Medium      
+		   0,            // Medium      Bad      Medium         High        
+		   0,            // Medium      Bad      High           Low         
+		   0,            // Medium      Bad      High           Medium      
+		   0,            // Medium      Bad      High           High        
+		   0,            // Medium      Good     Low            Low         
+		   0,            // Medium      Good     Low            Medium      
+		   0,            // Medium      Good     Low            High        
+		   0,            // Medium      Good     Medium         Low         
+		   1,            // Medium      Good     Medium         Medium      
+		   1,            // Medium      Good     Medium         High        
+		   0,            // Medium      Good     High           Low         
+		   0,            // Medium      Good     High           Medium      
+		   0,            // Medium      Good     High           High        
+		   0,            // High        Bad      Low            Low         
+		   0,            // High        Bad      Low            Medium      
+		   0,            // High        Bad      Low            High        
+		   0,            // High        Bad      Medium         Low         
+		   0,            // High        Bad      Medium         Medium      
+		   0,            // High        Bad      Medium         High        
+		   0,            // High        Bad      High           Low         
+		   0,            // High        Bad      High           Medium      
+		   0,            // High        Bad      High           High        
+		   0,            // High        Good     Low            Low         
+		   0,            // High        Good     Low            Medium      
+		   0,            // High        Good     Low            High        
+		   0,            // High        Good     Medium         Low         
+		   0,            // High        Good     Medium         Medium      
+		   0,            // High        Good     Medium         High        
+		   1,            // High        Good     High           Low         
+		   1,            // High        Good     High           Medium      
+		   1);           // High        Good     High           High        ;
+	whenchanged = 1689090752;
+	belief = (0.6279655, 0.2856438, 0.08639074);
 	visual V2 {
 		center = (876, 138);
 		height = 1;
 		};
 	};
+ElimOrder = (FaithfulnessLIMESKL, PPercentageSKL, EqualOpportunitySKL, InvertedBrierSKL, InvertedExpectedCalibrationSKL, AccuracySKL, PrecisionSKL, RecallSKL, Performance, Fairness, Explainability, Uncertainty, Trust);
 };
