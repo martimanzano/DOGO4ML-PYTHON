@@ -1,6 +1,6 @@
 class Trust:
     """
-    Trustworthiness indicator class containing its score and associated metrics and assessment method
+    Trustworthiness score class containing its score and associated metrics and assessment method
     """
 
     def __init__(self):
@@ -29,15 +29,6 @@ class Trust:
             metric.assess(self.trained_model, self.data_x, self.data_y)
 
         self.trust_dict, self.trust_JSON = self.assessment_method.assess()
-
-    
-    def get_trust_JSON(self) -> str:
-        """Returns the computed trust assessment as a string formatted as a JSON document
-        
-        Returns:
-            str: Trustworthiness score formated as a JSON string
-        """
-        return self.trust_JSON
     
     def get_metrics_assessment_dict(self) -> dict:
         """Returns a dictionary of shape Metric name (str) -> Metric assessment (float)

@@ -28,7 +28,7 @@
 </summary>
 <pre><code class="python">class Trust:
     &#34;&#34;&#34;
-    Trustworthiness indicator class containing its score and associated metrics and assessment method
+    Trustworthiness score class containing its score and associated metrics and assessment method
     &#34;&#34;&#34;
 
     def __init__(self):
@@ -57,15 +57,6 @@
             metric.assess(self.trained_model, self.data_x, self.data_y)
 
         self.trust_dict, self.trust_JSON = self.assessment_method.assess()
-
-    
-    def get_trust_JSON(self) -&gt; str:
-        &#34;&#34;&#34;Returns the computed trust assessment as a string formatted as a JSON document
-        
-        Returns:
-            str: Trustworthiness score formated as a JSON string
-        &#34;&#34;&#34;
-        return self.trust_JSON
     
     def get_metrics_assessment_dict(self) -&gt; dict:
         &#34;&#34;&#34;Returns a dictionary of shape Metric name (str) -&gt; Metric assessment (float)
@@ -92,14 +83,14 @@
 <span>class <span class="ident">Trust</span></span>
 </code></dt>
 <dd>
-<div class="desc"><p>Trustworthiness indicator class containing its score and associated metrics and assessment method</p></div>
+<div class="desc"><p>Trustworthiness score class containing its score and associated metrics and assessment method</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Trust:
     &#34;&#34;&#34;
-    Trustworthiness indicator class containing its score and associated metrics and assessment method
+    Trustworthiness score class containing its score and associated metrics and assessment method
     &#34;&#34;&#34;
 
     def __init__(self):
@@ -128,15 +119,6 @@
             metric.assess(self.trained_model, self.data_x, self.data_y)
 
         self.trust_dict, self.trust_JSON = self.assessment_method.assess()
-
-    
-    def get_trust_JSON(self) -&gt; str:
-        &#34;&#34;&#34;Returns the computed trust assessment as a string formatted as a JSON document
-        
-        Returns:
-            str: Trustworthiness score formated as a JSON string
-        &#34;&#34;&#34;
-        return self.trust_JSON
     
     def get_metrics_assessment_dict(self) -&gt; dict:
         &#34;&#34;&#34;Returns a dictionary of shape Metric name (str) -&gt; Metric assessment (float)
@@ -215,29 +197,6 @@ based on such metrics and the specified assessment method and its parameters.</p
     return dict(zip(metric_names, metric_assessments))</code></pre>
 </details>
 </dd>
-<dt id="trustML.trust.Trust.get_trust_JSON"><code class="name flex">
-<span>def <span class="ident">get_trust_JSON</span></span>(<span>self) ‑> str</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Returns the computed trust assessment as a string formatted as a JSON document</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Trustworthiness score formated as a JSON string</dd>
-</dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_trust_JSON(self) -&gt; str:
-    &#34;&#34;&#34;Returns the computed trust assessment as a string formatted as a JSON document
-    
-    Returns:
-        str: Trustworthiness score formated as a JSON string
-    &#34;&#34;&#34;
-    return self.trust_JSON</code></pre>
-</details>
-</dd>
 </dl>
 </dd>
 </dl>
@@ -261,7 +220,6 @@ based on such metrics and the specified assessment method and its parameters.</p
 <ul class="">
 <li><code><a title="trustML.trust.Trust.assess" href="#trustML.trust.Trust.assess">assess</a></code></li>
 <li><code><a title="trustML.trust.Trust.get_metrics_assessment_dict" href="#trustML.trust.Trust.get_metrics_assessment_dict">get_metrics_assessment_dict</a></code></li>
-<li><code><a title="trustML.trust.Trust.get_trust_JSON" href="#trustML.trust.Trust.get_trust_JSON">get_trust_JSON</a></code></li>
 </ul>
 </li>
 </ul>

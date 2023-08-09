@@ -19,7 +19,7 @@ class TrustComputation():
     def compute_trust(self, trained_model, data_x, data_y):
         """Performs the metrics' assessments, followed by the trust assessment
         based on such metrics and the specified assessment method and its parameters.
-        Leverages this process to the TWI class.
+        Leverages this process to the trust class.
 
         Args:
             trained_model: classifier to evaluate
@@ -39,7 +39,7 @@ class TrustComputation():
         """
         if self.trust.trust_JSON is None:
             raise AttributeError("Trustworthiness not computed yet")
-        return self.trust.get_trust_JSON()
+        return self.trust.trust_JSON
     
     def generate_trust_PDF(self, save_path):
         """Generates a PDF with the trust assessment graphical representation.

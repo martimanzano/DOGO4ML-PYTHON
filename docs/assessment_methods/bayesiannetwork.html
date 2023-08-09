@@ -33,7 +33,7 @@ from json import dumps
 class BayesianNetwork(AssessmentMethod):
     &#34;&#34;&#34;Class that implements the trust assessment using a Bayesian network in DNE format,
     by using a BN model previously crafted and provided in the filepath specified in the
-    configuration file. It requires to have the trust metrics already computed in the TWI object.
+    configuration file. It requires to have the trust metrics already computed in the trust object.
 
     It also requires an active and listening server with the SSI-Assessment API-library 
     deployed (https://github.com/martimanzano/SSI-assessment). Its endpoint shall be 
@@ -193,7 +193,7 @@ class BayesianNetwork(AssessmentMethod):
 <dd>
 <div class="desc"><p>Class that implements the trust assessment using a Bayesian network in DNE format,
 by using a BN model previously crafted and provided in the filepath specified in the
-configuration file. It requires to have the trust metrics already computed in the TWI object.</p>
+configuration file. It requires to have the trust metrics already computed in the trust object.</p>
 <p>It also requires an active and listening server with the SSI-Assessment API-library
 deployed (<a href="https://github.com/martimanzano/SSI-assessment">https://github.com/martimanzano/SSI-assessment</a>). Its endpoint shall be
 specified in the configuration file.</p>
@@ -220,7 +220,7 @@ the BN node corresponding to the trustworthiness, and the discretization interva
 <pre><code class="python">class BayesianNetwork(AssessmentMethod):
     &#34;&#34;&#34;Class that implements the trust assessment using a Bayesian network in DNE format,
     by using a BN model previously crafted and provided in the filepath specified in the
-    configuration file. It requires to have the trust metrics already computed in the TWI object.
+    configuration file. It requires to have the trust metrics already computed in the trust object.
 
     It also requires an active and listening server with the SSI-Assessment API-library 
     deployed (https://github.com/martimanzano/SSI-assessment). Its endpoint shall be 

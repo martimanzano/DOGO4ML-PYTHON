@@ -47,7 +47,7 @@ class TrustComputation():
     def compute_trust(self, trained_model, data_x, data_y):
         &#34;&#34;&#34;Performs the metrics&#39; assessments, followed by the trust assessment
         based on such metrics and the specified assessment method and its parameters.
-        Leverages this process to the TWI class.
+        Leverages this process to the trust class.
 
         Args:
             trained_model: classifier to evaluate
@@ -67,7 +67,7 @@ class TrustComputation():
         &#34;&#34;&#34;
         if self.trust.trust_JSON is None:
             raise AttributeError(&#34;Trustworthiness not computed yet&#34;)
-        return self.trust.get_trust_JSON()
+        return self.trust.trust_JSON
     
     def generate_trust_PDF(self, save_path):
         &#34;&#34;&#34;Generates a PDF with the trust assessment graphical representation.
@@ -118,7 +118,7 @@ class TrustComputation():
     def compute_trust(self, trained_model, data_x, data_y):
         &#34;&#34;&#34;Performs the metrics&#39; assessments, followed by the trust assessment
         based on such metrics and the specified assessment method and its parameters.
-        Leverages this process to the TWI class.
+        Leverages this process to the trust class.
 
         Args:
             trained_model: classifier to evaluate
@@ -138,7 +138,7 @@ class TrustComputation():
         &#34;&#34;&#34;
         if self.trust.trust_JSON is None:
             raise AttributeError(&#34;Trustworthiness not computed yet&#34;)
-        return self.trust.get_trust_JSON()
+        return self.trust.trust_JSON
     
     def generate_trust_PDF(self, save_path):
         &#34;&#34;&#34;Generates a PDF with the trust assessment graphical representation.
@@ -159,7 +159,7 @@ class TrustComputation():
 <dd>
 <div class="desc"><p>Performs the metrics' assessments, followed by the trust assessment
 based on such metrics and the specified assessment method and its parameters.
-Leverages this process to the TWI class.</p>
+Leverages this process to the trust class.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>trained_model</code></strong></dt>
@@ -176,7 +176,7 @@ Leverages this process to the TWI class.</p>
 <pre><code class="python">def compute_trust(self, trained_model, data_x, data_y):
     &#34;&#34;&#34;Performs the metrics&#39; assessments, followed by the trust assessment
     based on such metrics and the specified assessment method and its parameters.
-    Leverages this process to the TWI class.
+    Leverages this process to the trust class.
 
     Args:
         trained_model: classifier to evaluate
@@ -232,7 +232,7 @@ Leverages this process to the TWI class.</p>
     &#34;&#34;&#34;
     if self.trust.trust_JSON is None:
         raise AttributeError(&#34;Trustworthiness not computed yet&#34;)
-    return self.trust.get_trust_JSON()</code></pre>
+    return self.trust.trust_JSON</code></pre>
 </details>
 </dd>
 <dt id="trustML.computation.TrustComputation.load_trust_definition"><code class="name flex">

@@ -5,7 +5,7 @@ from json import dumps
 class BayesianNetwork(AssessmentMethod):
     """Class that implements the trust assessment using a Bayesian network in DNE format,
     by using a BN model previously crafted and provided in the filepath specified in the
-    configuration file. It requires to have the trust metrics already computed in the TWI object.
+    configuration file. It requires to have the trust metrics already computed in the trust object.
 
     It also requires an active and listening server with the SSI-Assessment API-library 
     deployed (https://github.com/martimanzano/SSI-assessment). Its endpoint shall be 

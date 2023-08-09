@@ -63,4 +63,4 @@ trust_german_credit.load_trust_definition(config_path=path_configuration_bank)
 trust_german_credit.compute_trust(trained_model=rf_model, data_x=test_x, data_y=test_y)
 
 print(trust_german_credit.get_trust_as_JSON())
-trust_german_credit.generate_trust_PDF(demo_path + "reportBN.pdf")
+trust_german_credit.generate_trust_PDF(save_path=demo_path + "report_german_credit.pdf")
