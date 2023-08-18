@@ -12,6 +12,6 @@ class AssessmentMethod:
         pass
 
     def generate_trust_PDF(self, save_path):
-        """(Optional) Generates a PDF containing the graphical representationi of the trustworthiness assessment 
+        """(Optional) Generates a PDF containing the graphical representation of the trustworthiness assessment 
         """
         raise NotImplementedError

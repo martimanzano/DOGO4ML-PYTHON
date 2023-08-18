@@ -50,4 +50,4 @@ trust_retention.compute_trust(rf_classifier_raw, X_test, Y_test)
 
 print(trust_retention.get_trust_as_JSON())
 
-trust_retention.generate_trust_PDF("C:/Users/marti/Desktop/reportER.pdf")
+trust_retention.generate_trust_PDF(demo_path + "reportER.pdf")
