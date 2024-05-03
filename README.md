@@ -11,7 +11,7 @@ The wiki with tutorials on the package's usage and extension is available on htt
 
 The _TrustML_ package is free software distributed under the Apache License 2.0. If you are interested in participating in this project, please use the [GitHub repository](https://github.com/martimanzano/TrustML); and review the [Contributing page](https://github.com/martimanzano/trustML/blob/modular/CONTRIBUTING.md), the [Code of Conduct](https://github.com/martimanzano/trustML/blob/modular/CODE_OF_CONDUCT.md) and the specific [Contributing articles](https://github.com/martimanzano/trustML/tree/modular/contributing) all contributions are welcomed.
 
-If you want to citate _TrustML_, please cite the following paper:
+If you want to cite _TrustML_, please use the following reference:
 
 TrustML: A Python package for computing the trustworthiness of ML models
 Martí Manzano, Claudia Ayala, Cristina Gómez, SoftwareX,
