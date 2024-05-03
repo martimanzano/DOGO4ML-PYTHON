@@ -10,3 +10,28 @@ The API documentation is available on https://martimanzano.github.io/TrustML/.
 The wiki with tutorials on the package's usage and extension is available on https://github.com/martimanzano/TrustML/wiki/Home/.
 
 The _TrustML_ package is free software distributed under the Apache License 2.0. If you are interested in participating in this project, please use the [GitHub repository](https://github.com/martimanzano/TrustML); and review the [Contributing page](https://github.com/martimanzano/trustML/blob/modular/CONTRIBUTING.md), the [Code of Conduct](https://github.com/martimanzano/trustML/blob/modular/CODE_OF_CONDUCT.md) and the specific [Contributing articles](https://github.com/martimanzano/trustML/tree/modular/contributing) all contributions are welcomed.
+
+If you want to citate _TrustML_, please cite the following paper:
+
+TrustML: A Python package for computing the trustworthiness of ML models
+Martí Manzano, Claudia Ayala, Cristina Gómez, SoftwareX,
+Volume 26,
+2024,
+101740,
+ISSN 2352-7110,
+https://doi.org/10.1016/j.softx.2024.101740.
+
+Bibtex entry:
+```
+@article{MANZANO2024101740,
+  title = {TrustML: A Python package for computing the trustworthiness of ML models},
+  journal = {SoftwareX},
+  volume = {26},
+  pages = {101740},
+  year = {2024},
+  issn = {2352-7110},
+  doi = {https://doi.org/10.1016/j.softx.2024.101740},
+  url = {https://www.sciencedirect.com/science/article/pii/S2352711024001110},
+  author = {Martí Manzano and Claudia Ayala and Cristina Gómez}
+}
+```
